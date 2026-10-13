@@ -123,10 +123,10 @@ export default defineConfig({
           '/components/': buildSidebar('/components', componentGroups),
         },
         outline: { level: [2, 3], label: '本页目录' },
-        socialLinks: [{ icon: 'github', link: 'https://github.com/lhgb/lh-ui' }],
+        socialLinks: [{ icon: 'github', link: 'https://github.com/lhgb-top/lh-ui-windows' }],
         footer: {
           message: 'lh-ui 原生血脉 · Windows 端（C# + WinUI 3）',
-          copyright: 'MIT License',
+          copyright: 'Apache-2.0 License',
         },
       },
     },

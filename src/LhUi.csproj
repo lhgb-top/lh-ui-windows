@@ -10,6 +10,9 @@
     <NoWarn>CS1591</NoWarn>
     <!-- 库版本真源：由 scripts/sync-version.mjs 从 package.json 单向同步，禁止手改 -->
     <Version>0.0.1</Version>
+    <!-- NuGet 包标识（非 npm 平台统一 groupId top.lhgb.ui + 平台名；.NET 惯例 PascalCase + 点号）。
+         不设则 dotnet pack 默认取 AssemblyName(LhUi)，与家族命名方案不一致。 -->
+    <PackageId>Top.Lhgb.Ui.Windows</PackageId>
     <!-- 开源溯源元数据（NuGet 打包时写入 nupkg，不影响类库编译） -->
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/lhgb-top/lh-ui-windows</RepositoryUrl>

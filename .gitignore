@@ -1,0 +1,32 @@
+# 令牌生成物（由 scripts/link-tokens.mjs 从 ../lh-ui-core/dist/windows 同步，禁止手改）
+src/Tokens/
+
+# 文档模拟器令牌（由 scripts/gen-sim-tokens.mjs 生成）
+docs/.vitepress/theme/sim-tokens.css
+
+# VitePress 构建产物
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# .NET 构建产物
+bin/
+obj/
+*.user
+.vs/
+*.suo
+
+# NuGet 打包产物（dotnet pack 产出，仅发版时本地生成）
+*.nupkg
+*.snupkg
+
+# node
+node_modules/
+.pnpm-store/
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# ZCode 工具目录（plan 文件等，非仓库内容）
+.zcode/

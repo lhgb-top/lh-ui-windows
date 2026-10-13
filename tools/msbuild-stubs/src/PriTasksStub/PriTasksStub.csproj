@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Microsoft.Build.Packaging.Pri.Tasks.ExpandPriContent 的占位实现。
+    同 AppxPackageStub 的背景：任务程序集只随 Visual Studio 工作负载发布。
+    占位行为是输入透传、不产出中间文件——对类库输出无害；真正需要展开 PRI 内容的
+    Appx 打包场景仍须官方任务。
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Build.Packaging.Pri.Tasks</AssemblyName>
+    <RootNamespace>Microsoft.Build.Packaging.Pri.Tasks</RootNamespace>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <NoWarn>CS1591</NoWarn>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Framework" Version="17.0.0" />
+  </ItemGroup>
+</Project>

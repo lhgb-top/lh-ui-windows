@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <UseWinUI>true</UseWinUI>
+    <RootNamespace>Top.Lhgb.Ui.Tests</RootNamespace>
+    <AssemblyName>LhUi.Tests</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+
+    <!-- testhost 进程依赖 Microsoft.TestPlatform.* / xunit.core 等随产物复制，否则
+         dotnet test 启动即 FileNotFoundException。UseWinUI=true 时 Microsoft.NET.Test.Sdk.targets
+         故意不设 OutputType=Exe（交由项目自身声明 WinExe），本项目未声明则默认 Library →
+         HasRuntimeOutput=false → CopyLocalLockFileAssemblies=false，NuGet 托管程序集不落盘。
+         显式开回 CopyLocalLockFileAssemblies 即翻转同一闸门（等价于设 OutputType=WinExe）。 -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <!-- 与 src/LhUi.csproj 同构的环境守卫：缺 VS「Windows 应用开发」工作负载时，
+       回退仓内占位任务程序集并关掉 PRI 生成链（详见 src/LhUi.csproj 注释）。 -->
+  <PropertyGroup Condition="!Exists('$(AppxMSBuildToolsPath)Microsoft.Build.AppxPackage.dll')">
+    <AppxMSBuildTaskAssembly>$(MSBuildThisFileDirectory)..\tools\msbuild-stubs\lib\Microsoft.Build.AppxPackage.dll</AppxMSBuildTaskAssembly>
+    <PriProjTaskAssembly>$(MSBuildThisFileDirectory)..\tools\msbuild-stubs\lib\Microsoft.Build.Packaging.Pri.Tasks.dll</PriProjTaskAssembly>
+    <AppxGeneratePriEnabled>false</AppxGeneratePriEnabled>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
+    <PackageReference Include="xunit" Version="2.*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.*" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\LhUi.csproj" />
+  </ItemGroup>
+
+</Project>

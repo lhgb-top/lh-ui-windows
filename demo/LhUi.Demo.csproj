@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <UseWinUI>true</UseWinUI>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Top.Lhgb.Ui.Demo</RootNamespace>
+    <AssemblyName>LhUi.Demo</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <!-- MSIX 打包形态由发布管线决定；本 demo 以解包部署为先 -->
+    <WindowsPackageType>None</WindowsPackageType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.*" />
+  </ItemGroup>
+
+  <!-- 与 src/LhUi.csproj 同构的环境守卫：缺 VS「Windows 应用开发」工作负载时，
+       回退仓内占位任务程序集并关掉 PRI 生成链（详见 src/LhUi.csproj 注释）。 -->
+  <PropertyGroup Condition="!Exists('$(AppxMSBuildToolsPath)Microsoft.Build.AppxPackage.dll')">
+    <AppxMSBuildTaskAssembly>$(MSBuildThisFileDirectory)..\tools\msbuild-stubs\lib\Microsoft.Build.AppxPackage.dll</AppxMSBuildTaskAssembly>
+    <PriProjTaskAssembly>$(MSBuildThisFileDirectory)..\tools\msbuild-stubs\lib\Microsoft.Build.Packaging.Pri.Tasks.dll</PriProjTaskAssembly>
+    <AppxGeneratePriEnabled>false</AppxGeneratePriEnabled>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\LhUi.csproj" />
+  </ItemGroup>
+
+</Project>

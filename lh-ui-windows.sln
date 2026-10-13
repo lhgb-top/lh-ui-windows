@@ -1,0 +1,52 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# lh-ui-windows 解决方案：类库（LhUi）+ 黄金用例（LhUi.Tests）+ 演示应用（LhUi.Demo）+ 文档应用（LhUi.DocsApp）
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhUi", "src\LhUi.csproj", "{A1A1A1A1-1111-1111-1111-111111111111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhUi.Tests", "tests\LhUi.Tests.csproj", "{B2B2B2B2-2222-2222-2222-222222222222}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhUi.Demo", "demo\LhUi.Demo.csproj", "{C3C3C3C3-3333-3333-3333-333333333333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhUi.DocsApp", "docsapp\LhUi.DocsApp.csproj", "{D4D4D4D4-4444-4444-4444-444444444444}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1A1A1A1-1111-1111-1111-111111111111}.Debug|x64.ActiveCfg = Debug|x64
+		{A1A1A1A1-1111-1111-1111-111111111111}.Debug|x64.Build.0 = Debug|x64
+		{A1A1A1A1-1111-1111-1111-111111111111}.Release|x64.ActiveCfg = Release|x64
+		{A1A1A1A1-1111-1111-1111-111111111111}.Release|x64.Build.0 = Release|x64
+		{A1A1A1A1-1111-1111-1111-111111111111}.Debug|x86.ActiveCfg = Debug|x86
+		{A1A1A1A1-1111-1111-1111-111111111111}.Debug|x86.Build.0 = Debug|x86
+		{A1A1A1A1-1111-1111-1111-111111111111}.Release|x86.ActiveCfg = Release|x86
+		{A1A1A1A1-1111-1111-1111-111111111111}.Release|x86.Build.0 = Release|x86
+		{B2B2B2B2-2222-2222-2222-222222222222}.Debug|x64.ActiveCfg = Debug|x64
+		{B2B2B2B2-2222-2222-2222-222222222222}.Debug|x64.Build.0 = Debug|x64
+		{B2B2B2B2-2222-2222-2222-222222222222}.Release|x64.ActiveCfg = Release|x64
+		{B2B2B2B2-2222-2222-2222-222222222222}.Release|x64.Build.0 = Release|x64
+		{B2B2B2B2-2222-2222-2222-222222222222}.Debug|x86.ActiveCfg = Debug|x86
+		{B2B2B2B2-2222-2222-2222-222222222222}.Debug|x86.Build.0 = Debug|x86
+		{B2B2B2B2-2222-2222-2222-222222222222}.Release|x86.ActiveCfg = Release|x86
+		{B2B2B2B2-2222-2222-2222-222222222222}.Release|x86.Build.0 = Release|x86
+		{C3C3C3C3-3333-3333-3333-333333333333}.Debug|x64.ActiveCfg = Debug|x64
+		{C3C3C3C3-3333-3333-3333-333333333333}.Debug|x64.Build.0 = Debug|x64
+		{C3C3C3C3-3333-3333-3333-333333333333}.Release|x64.ActiveCfg = Release|x64
+		{C3C3C3C3-3333-3333-3333-333333333333}.Release|x64.Build.0 = Release|x64
+		{C3C3C3C3-3333-3333-3333-333333333333}.Debug|x86.ActiveCfg = Debug|x86
+		{C3C3C3C3-3333-3333-3333-333333333333}.Debug|x86.Build.0 = Debug|x86
+		{C3C3C3C3-3333-3333-3333-333333333333}.Release|x86.ActiveCfg = Release|x86
+		{C3C3C3C3-3333-3333-3333-333333333333}.Release|x86.Build.0 = Release|x86
+		{D4D4D4D4-4444-4444-4444-444444444444}.Debug|x64.ActiveCfg = Debug|x64
+		{D4D4D4D4-4444-4444-4444-444444444444}.Debug|x64.Build.0 = Debug|x64
+		{D4D4D4D4-4444-4444-4444-444444444444}.Release|x64.ActiveCfg = Release|x64
+		{D4D4D4D4-4444-4444-4444-444444444444}.Release|x64.Build.0 = Release|x64
+		{D4D4D4D4-4444-4444-4444-444444444444}.Debug|x86.ActiveCfg = Debug|x86
+		{D4D4D4D4-4444-4444-4444-444444444444}.Debug|x86.Build.0 = Debug|x86
+		{D4D4D4D4-4444-4444-4444-444444444444}.Release|x86.ActiveCfg = Release|x86
+		{D4D4D4D4-4444-4444-4444-444444444444}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal

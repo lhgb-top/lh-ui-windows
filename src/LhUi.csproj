@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <UseWinUI>true</UseWinUI>
+    <RootNamespace>Top.Lhgb.Ui</RootNamespace>
+    <AssemblyName>LhUi</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <NoWarn>CS1591</NoWarn>
+    <!-- 库版本真源：由 scripts/sync-version.mjs 从 package.json 单向同步，禁止手改 -->
+    <Version>0.0.1</Version>
+    <!-- 开源溯源元数据（NuGet 打包时写入 nupkg，不影响类库编译） -->
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/lhgb-top/lh-ui-windows</RepositoryUrl>
+    <!-- 令牌目录是 codegen 生成物（pnpm link:tokens），不在 git 中，编译前须先同步 -->
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.*" />
+  </ItemGroup>
+
+  <!--
+    Windows App SDK 的 PriGen targets 无条件调用 Microsoft.Build.AppxPackage /
+    Microsoft.Build.Packaging.Pri.Tasks 任务，而这两种任务程序集只随 Visual Studio 的
+    「Windows 应用开发 / UWP」工作负载发布。只装了 .NET SDK 的机器会 MSB4062，
+    连纯类库的编译都走不完。
+
+    存在性守卫（与家族 D18 三级守卫同构）：官方程序集在场时优先官方，缺席时回退到
+    仓内占位（tools/msbuild-stubs/，输入透传，仅供类库编译；打 MSIX 包仍需官方任务）。
+    装好 Visual Studio 工作负载后，本 PropertyGroup 自动失效，无需删配置。
+  -->
+  <PropertyGroup Condition="!Exists('$(AppxMSBuildToolsPath)Microsoft.Build.AppxPackage.dll')">
+    <AppxMSBuildTaskAssembly>$(MSBuildThisFileDirectory)..\tools\msbuild-stubs\lib\Microsoft.Build.AppxPackage.dll</AppxMSBuildTaskAssembly>
+    <PriProjTaskAssembly>$(MSBuildThisFileDirectory)..\tools\msbuild-stubs\lib\Microsoft.Build.Packaging.Pri.Tasks.dll</PriProjTaskAssembly>
+    <!--
+      本库是纯 C# 代码后端（无 .xaml / .resw），PRI 生成无实质产物；而 PriGen 的生成链
+      （GeneratePriConfigurationFiles → CreatePriConfigXmlForFullIndex → _GenerateProjectPriFileCore）
+      只随上述工作负载的程序集到来。官方任务在场时保持默认 true，缺席时关掉整条链，
+      跳过占位任务覆盖不到的 PriTasks 环节。PriGen targets 自身对 Portable 库也用 false（_SetPortablePriProperties）。
+    -->
+    <AppxGeneratePriEnabled>false</AppxGeneratePriEnabled>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Microsoft.Build.AppxPackage.RemovePayloadDuplicates 的占位实现。
+    Windows App SDK 的 targets 无条件调用该任务，任务程序集只随 Visual Studio 的
+    UWP / Windows 应用开发工作负载发布；只装了 .NET SDK 的机器（CI、精简开发机）
+    会因缺该程序集而 MSB4062，连纯类库的编译都走不完。
+    本占位仅在官方程序集缺席时被 LhUi.csproj 的存在性守卫启用（见该文件注释），
+    行为是输入项按 ItemSpec 去重后透传——对类库输出无害；打 MSIX 包时仍需官方任务。
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Build.AppxPackage</AssemblyName>
+    <RootNamespace>Microsoft.Build.AppxPackage</RootNamespace>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <NoWarn>CS1591</NoWarn>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Framework" Version="17.0.0" />
+  </ItemGroup>
+</Project>

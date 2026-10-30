@@ -39,9 +39,9 @@ internal static class RadioPreviews
     {
         return PreviewLayout.Column(
             PreviewLayout.Row(
-                new LhRadio { Size = LhRadioSize.Small, Label = "small", Checked = true },
-                new LhRadio { Size = LhRadioSize.Medium, Label = "medium（默认）", Checked = true },
-                new LhRadio { Size = LhRadioSize.Large, Label = "large", Checked = true }));
+                new LhRadio { LhSize = LhRadioSize.Small, Label = "small", Checked = true },
+                new LhRadio { LhSize = LhRadioSize.Medium, Label = "medium（默认）", Checked = true },
+                new LhRadio { LhSize = LhRadioSize.Large, Label = "large", Checked = true }));
     }
 
     /// <summary>## 状态</summary>

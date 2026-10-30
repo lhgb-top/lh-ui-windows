@@ -40,7 +40,7 @@ internal sealed class ButtonDoc
                     "    Type = LhButtonType.Primary,",
                     "    Text = \"主要按钮\",",
                     "};",
-                    "button.Click += OnButtonClick;"
+                    "button.LhOnClick += OnButtonClick;"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -56,7 +56,7 @@ internal sealed class ButtonDoc
                 "状态",
                 new[]
                 {
-                    "禁用与加载中都不触发 `Click`；两者共存时按**禁用优先**处理（黄金用例 `disabled-precedes-loading`）。"
+                    "禁用与加载中都不触发 `LhOnClick`；两者共存时按**禁用优先**处理（黄金用例 `disabled-precedes-loading`）。"
                 },
                 ButtonPreviews.States,
                 Array.Empty<string>(),
@@ -92,11 +92,11 @@ internal sealed class ButtonDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`Click`", "点击事件；`Disabled` 或 `Loading` 为 true 时不触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnClick`", "点击事件；`Disabled` 或 `Loading` 为 true 时不触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Type`", "按钮类型，决定底色与文字色", "`LhButtonType`", "`Default`" }),
-                        new DocRow(new[] { "`Size`", "按钮尺寸，映射到尺寸令牌", "`LhButtonSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "按钮尺寸，映射到尺寸令牌", "`LhButtonSize`", "`Medium`" }),
                         new DocRow(new[] { "`Disabled`", "是否禁用", "`bool`", "`false`" }),
-                        new DocRow(new[] { "`Loading`", "是否加载中（显示指示器，不触发 Click）", "`bool`", "`false`" }),
+                        new DocRow(new[] { "`Loading`", "是否加载中（显示指示器，不触发 LhOnClick）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Icon`", "图标名（本地图标体系解析）", "`string?`", "`null`" }),
                         new DocRow(new[] { "`BgPattern`", "是否绘制国风花纹底纹", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Text`", "按钮文字内容（spec 的 default 插槽）", "`string`", "`\"\"`" }),

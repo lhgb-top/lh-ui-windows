@@ -32,8 +32,8 @@ public sealed class LhTag : UserControl
         new PropertyMetadata(LhTagType.Default, OnAppearanceChanged));
 
     /// <summary>标签尺寸，映射到 tag.height / paddingHorizontal / fontSize 令牌</summary>
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhTagSize), typeof(LhTag),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhTagSize), typeof(LhTag),
         new PropertyMetadata(LhTagSize.Medium, OnAppearanceChanged));
 
     /// <summary>是否为描边（plain）样式：语义浅底 + 语义字 + 语义描边</summary>
@@ -57,7 +57,7 @@ public sealed class LhTag : UserControl
         new PropertyMetadata(string.Empty, OnTextChanged));
 
     public LhTagType Type { get => (LhTagType)GetValue(TypeProperty); set => SetValue(TypeProperty, value); }
-    public LhTagSize Size { get => (LhTagSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhTagSize LhSize { get => (LhTagSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
     public bool Plain { get => (bool)GetValue(PlainProperty); set => SetValue(PlainProperty, value); }
     public bool Round { get => (bool)GetValue(RoundProperty); set => SetValue(RoundProperty, value); }
     public bool Closable { get => (bool)GetValue(ClosableProperty); set => SetValue(ClosableProperty, value); }
@@ -99,7 +99,7 @@ public sealed class LhTag : UserControl
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhTagAppearance ResolveAppearance() =>
-        LhTagTokens.Resolve(Type, Size, Plain, Round, LhTheme.Current);
+        LhTagTokens.Resolve(Type, LhSize, Plain, Round, LhTheme.Current);
 
     private void ApplyAppearance()
     {

@@ -77,7 +77,7 @@ internal sealed class RadioDoc
                         new DocRow(new[] { "`Disabled`", "是否禁用（不响应点击且呈现禁用样式）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Label`", "文字标签（绘制在圆环右侧）", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Value`", "单选值（组内标识，组件本身不含组逻辑）", "`string`", "`\"\"`" }),
-                        new DocRow(new[] { "`Size`", "圆环尺寸，映射到 `radio.size.*` 令牌", "`LhRadioSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "圆环尺寸，映射到 `radio.size.*` 令牌", "`LhRadioSize`", "`Medium`" }),
                     }),
                     new DocTable("LhRadioSize", new[] { "值", "尺寸令牌" }, new[]
                     {

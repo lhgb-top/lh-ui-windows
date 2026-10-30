@@ -73,8 +73,8 @@ internal sealed class TextareaDoc
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
                         new DocRow(new[] { "`ValueChange`", "值变化回调（受控）；disabled / readonly 时不触发", "`event Action<string>`", "—" }),
-                        new DocRow(new[] { "`Focus`", "获得焦点时触发", "`event Action`", "—" }),
-                        new DocRow(new[] { "`Blur`", "失去焦点时触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnFocus`", "获得焦点时触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnBlur`", "失去焦点时触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Value`", "当前文本值（受控）", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Placeholder`", "占位提示文字，取 `color.text.placeholder` 令牌", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Rows`", "初始可见行数；高度随行数与内容增长", "`int`", "`3`" }),

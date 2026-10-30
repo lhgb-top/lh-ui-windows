@@ -13,7 +13,7 @@ internal sealed class LoadingDoc
 {
     public static readonly DocEntry Entry = new DocEntry(
         "loading",
-        "Loading 加载指示器",
+        "Loading 加载",
         new[]
         {
                 "环形旋转加载指示器。支持尺寸与语义色调。",
@@ -41,7 +41,7 @@ internal sealed class LoadingDoc
                 {
                     "var loading = new LhLoading",
                     "{",
-                    "    Size = LhLoadingSize.Large,",
+                    "    LhSize = LhLoadingSize.Large,",
                     "    Tone = LhLoadingTone.Primary,",
                     "};"
                 },
@@ -64,7 +64,7 @@ internal sealed class LoadingDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`Size`", "指示器直径，映射到 `loading.size.*` 令牌", "`LhLoadingSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "指示器直径，映射到 `loading.size.*` 令牌", "`LhLoadingSize`", "`Medium`" }),
                         new DocRow(new[] { "`Tone`", "环色，取对应语义色令牌", "`LhLoadingTone`", "`Primary`" }),
                     }),
                     new DocTable("LhLoadingSize", new[] { "值", "直径令牌" }, new[]

@@ -23,7 +23,7 @@ internal static class IconPreviews
 
     private static LhIcon IconOf(DocPreviewScope scope, LhIconSize size, string label)
     {
-        var icon = new LhIcon { Size = size, Name = "star" };
+        var icon = new LhIcon { LhSize = size, Name = "star" };
         icon.Tapped += (s, e) => scope.ShowToast($"{label} 图标");
         return icon;
     }

@@ -92,7 +92,7 @@ internal sealed class TagDoc
                         new DocRow(new[] { "`Close`", "点击关闭符时触发（需 `Closable` 为 true）", "`event Action`", "—" }),
                         new DocRow(new[] { "`Text`", "标签文字内容（spec 的 default 插槽）", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Type`", "语义类型，决定底色、文字色与描边色", "`LhTagType`", "`Default`" }),
-                        new DocRow(new[] { "`Size`", "标签尺寸，映射到尺寸令牌", "`LhTagSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "标签尺寸，映射到尺寸令牌", "`LhTagSize`", "`Medium`" }),
                         new DocRow(new[] { "`Plain`", "是否为浅底描边形态", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Round`", "是否为胶囊形态（圆角取高度一半）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Closable`", "是否显示关闭符", "`bool`", "`false`" }),

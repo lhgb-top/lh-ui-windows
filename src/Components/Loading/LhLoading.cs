@@ -19,15 +19,15 @@ public sealed class LhLoading : UserControl
 {
     private readonly ProgressRing _ring;
 
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhLoadingSize), typeof(LhLoading),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhLoadingSize), typeof(LhLoading),
         new PropertyMetadata(LhLoadingSize.Medium, OnAppearanceChanged));
 
     public static readonly DependencyProperty ToneProperty = DependencyProperty.Register(
         nameof(Tone), typeof(LhLoadingTone), typeof(LhLoading),
         new PropertyMetadata(LhLoadingTone.Primary, OnAppearanceChanged));
 
-    public LhLoadingSize Size { get => (LhLoadingSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhLoadingSize LhSize { get => (LhLoadingSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
     public LhLoadingTone Tone { get => (LhLoadingTone)GetValue(ToneProperty); set => SetValue(ToneProperty, value); }
 
     public LhLoading()
@@ -47,7 +47,7 @@ public sealed class LhLoading : UserControl
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhLoadingAppearance ResolveAppearance() =>
-        LhLoadingTokens.Resolve(Size, Tone, LhTheme.Current);
+        LhLoadingTokens.Resolve(LhSize, Tone, LhTheme.Current);
 
     private void ApplyAppearance()
     {

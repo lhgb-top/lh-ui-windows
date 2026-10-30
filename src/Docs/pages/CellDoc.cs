@@ -69,7 +69,7 @@ internal sealed class CellDoc
                     "    Clickable = true,",
                     "    Bordered = true,",
                     "};",
-                    "cell.Click += () => { /* 仅 Clickable 为 true 时触发 */ };"
+                    "cell.LhOnClick += () => { /* 仅 Clickable 为 true 时触发 */ };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -90,7 +90,7 @@ internal sealed class CellDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`Click`", "点击事件；仅 `Clickable` 为 true 时触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnClick`", "点击事件；仅 `Clickable` 为 true 时触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Title`", "标题（spec 的 title 插槽）", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Label`", "标题下说明文字（label 插槽）", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Value`", "右侧值文本（value 插槽）", "`string`", "`\"\"`" }),

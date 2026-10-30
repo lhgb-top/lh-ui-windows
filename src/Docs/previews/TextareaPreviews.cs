@@ -15,7 +15,7 @@ internal static class TextareaPreviews
     {
         var textarea = new LhTextarea { Placeholder = "请输入多行内容" };
         textarea.ValueChange += value => scope.ShowToast($"ValueChange：{value}");
-        textarea.Blur += () => scope.ShowToast("Blur 失焦事件");
+        textarea.LhOnBlur += () => scope.ShowToast("Blur 失焦事件");
 
         return PreviewLayout.Column(
             textarea,

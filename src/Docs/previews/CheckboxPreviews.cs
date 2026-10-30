@@ -30,9 +30,9 @@ internal static class CheckboxPreviews
     {
         return PreviewLayout.Column(
             PreviewLayout.Row(
-                new LhCheckbox { Size = LhCheckboxSize.Small, Label = "small" },
-                new LhCheckbox { Size = LhCheckboxSize.Medium, Label = "medium（默认）" },
-                new LhCheckbox { Size = LhCheckboxSize.Large, Label = "large" }));
+                new LhCheckbox { LhSize = LhCheckboxSize.Small, Label = "small" },
+                new LhCheckbox { LhSize = LhCheckboxSize.Medium, Label = "medium（默认）" },
+                new LhCheckbox { LhSize = LhCheckboxSize.Large, Label = "large" }));
     }
 
     /// <summary>## 状态</summary>

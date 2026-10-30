@@ -22,7 +22,7 @@ public enum LhButtonType
 }
 
 /// <summary>
-/// 按钮尺寸。枚举名与 spec 的 prop <c>size</c> 对齐。
+/// 按钮尺寸。枚举名与 spec 的 prop <c>lhSize</c> 对齐（C# 侧 PascalCase）。
 ///
 /// 映射到 button.height / paddingHorizontal / fontSize / iconSize 令牌。
 /// </summary>

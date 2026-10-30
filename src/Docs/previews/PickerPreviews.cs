@@ -34,7 +34,7 @@ internal static class PickerPreviews
         picker.Close += () => picker.Visible = false;
 
         var open = new LhButton { Type = LhButtonType.Primary, Text = "打开 Picker" };
-        open.Click += () => picker.Visible = true;
+        open.LhOnClick += () => picker.Visible = true;
 
         return Overlay(open, picker);
     }
@@ -53,7 +53,7 @@ internal static class PickerPreviews
         picker.Close += () => picker.Visible = false;
 
         var open = new LhButton { Type = LhButtonType.Primary, Text = "Value = 99 打开 Picker" };
-        open.Click += () => picker.Visible = true;
+        open.LhOnClick += () => picker.Visible = true;
 
         return Overlay(open, picker);
     }

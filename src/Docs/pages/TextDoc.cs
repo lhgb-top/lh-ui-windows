@@ -82,7 +82,7 @@ internal sealed class TextDoc
                         new DocRow(new[] { "`Level`", "字号级别，映射到 `typography.fontSize.*`", "`LhTextLevel`", "`Base`" }),
                         new DocRow(new[] { "`Weight`", "字重，映射到 `typography.fontWeight.*`", "`LhTextWeight`", "`Primary`" }),
                         new DocRow(new[] { "`Tone`", "文字色调，映射到 `color.text.*` / `color.selected`", "`LhTextTone`", "`Regular`" }),
-                        new DocRow(new[] { "`Align`", "水平对齐（映射到 `TextAlignment`）", "`LhTextAlign`", "`Start`" }),
+                        new DocRow(new[] { "`LhAlign`", "水平对齐（映射到 `TextAlignment`）", "`LhTextAlign`", "`Start`" }),
                     }),
                     new DocTable("LhTextLevel", new[] { "值", "字号令牌" }, new[]
                     {

@@ -32,14 +32,14 @@ public sealed class LhButton : UserControl
     private readonly TextBlock _label;
 
     /// <summary>点击回调；disabled 或 loading 为 true 时不触发</summary>
-    public event Action? Click;
+    public event Action? LhOnClick;
 
     public static readonly DependencyProperty TypeProperty = DependencyProperty.Register(
         nameof(Type), typeof(LhButtonType), typeof(LhButton),
         new PropertyMetadata(LhButtonType.Default, OnAppearanceChanged));
 
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhButtonSize), typeof(LhButton),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhButtonSize), typeof(LhButton),
         new PropertyMetadata(LhButtonSize.Medium, OnAppearanceChanged));
 
     public static readonly DependencyProperty DisabledProperty = DependencyProperty.Register(
@@ -66,7 +66,7 @@ public sealed class LhButton : UserControl
     public LhButtonType Type { get => (LhButtonType)GetValue(TypeProperty); set => SetValue(TypeProperty, value); }
 
     /// <summary>按钮尺寸，映射到 button.height / paddingHorizontal / fontSize / iconSize 令牌</summary>
-    public LhButtonSize Size { get => (LhButtonSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhButtonSize LhSize { get => (LhButtonSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
 
     /// <summary>是否禁用；禁用时不响应点击并呈现禁用样式（disabled.* 令牌）</summary>
     public bool Disabled { get => (bool)GetValue(DisabledProperty); set => SetValue(DisabledProperty, value); }
@@ -135,13 +135,13 @@ public sealed class LhButton : UserControl
         // 状态 gate：disabled 与 loading 均不触发（IsEnabled 已拦截，此处双保险）
         if (ResolveAppearance().Enabled)
         {
-            Click?.Invoke();
+            LhOnClick?.Invoke();
         }
     }
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhButtonAppearance ResolveAppearance() =>
-        LhButtonTokens.Resolve(Type, Size, Disabled, Loading, BgPattern, LhTheme.Current);
+        LhButtonTokens.Resolve(Type, LhSize, Disabled, Loading, BgPattern, LhTheme.Current);
 
     private void ApplyAppearance()
     {

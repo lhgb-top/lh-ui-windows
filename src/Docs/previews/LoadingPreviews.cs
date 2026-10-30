@@ -16,13 +16,13 @@ internal static class LoadingPreviews
     {
         return PreviewLayout.Column(
             PreviewLayout.Row(
-                new LhLoading { Size = LhLoadingSize.Small },
+                new LhLoading { LhSize = LhLoadingSize.Small },
                 new LhText { Text = "small" }),
             PreviewLayout.Row(
-                new LhLoading { Size = LhLoadingSize.Medium },
+                new LhLoading { LhSize = LhLoadingSize.Medium },
                 new LhText { Text = "medium（默认）" }),
             PreviewLayout.Row(
-                new LhLoading { Size = LhLoadingSize.Large },
+                new LhLoading { LhSize = LhLoadingSize.Large },
                 new LhText { Text = "large" }));
     }
 

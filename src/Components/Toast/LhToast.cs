@@ -57,8 +57,8 @@ public sealed class LhToast : UserControl
         new PropertyMetadata(2000));
 
     /// <summary>在可用区域内的定位；上下两端留 spacing.xl 边距</summary>
-    public static readonly DependencyProperty PositionProperty = DependencyProperty.Register(
-        nameof(Position), typeof(LhToastPosition), typeof(LhToast),
+    public static readonly DependencyProperty LhPositionProperty = DependencyProperty.Register(
+        nameof(LhPosition), typeof(LhToastPosition), typeof(LhToast),
         new PropertyMetadata(LhToastPosition.Center, OnPositionChanged));
 
     /// <summary>宿主控制器（可选）</summary>
@@ -68,7 +68,7 @@ public sealed class LhToast : UserControl
 
     public LhToastType Type { get => (LhToastType)GetValue(TypeProperty); set => SetValue(TypeProperty, value); }
     public int Duration { get => (int)GetValue(DurationProperty); set => SetValue(DurationProperty, value); }
-    public LhToastPosition Position { get => (LhToastPosition)GetValue(PositionProperty); set => SetValue(PositionProperty, value); }
+    public LhToastPosition LhPosition { get => (LhToastPosition)GetValue(LhPositionProperty); set => SetValue(LhPositionProperty, value); }
     public LhToastController Controller { get => (LhToastController)GetValue(ControllerProperty); set => SetValue(ControllerProperty, value); }
 
     /// <summary>内部可见态（由 Show/Hide 维护，不可见时不渲染任何内容）</summary>
@@ -155,13 +155,13 @@ public sealed class LhToast : UserControl
     {
         var margin = LhEpx.Px(a.EdgeMargin);
         _capsule.HorizontalAlignment = HorizontalAlignment.Center;
-        _capsule.VerticalAlignment = Position switch
+        _capsule.VerticalAlignment = LhPosition switch
         {
             LhToastPosition.Top => VerticalAlignment.Top,
             LhToastPosition.Bottom => VerticalAlignment.Bottom,
             _ => VerticalAlignment.Center,
         };
-        _root.Padding = Position switch
+        _root.Padding = LhPosition switch
         {
             LhToastPosition.Top => new Thickness(0, margin, 0, 0),
             LhToastPosition.Bottom => new Thickness(0, 0, 0, margin),

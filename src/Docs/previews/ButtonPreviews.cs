@@ -26,7 +26,7 @@ internal static class ButtonPreviews
                 var type = types[j];
                 var button = new LhButton { Type = type, Text = labels[j] + "按钮" };
                 var count = 0;
-                button.Click += () => scope.ShowToast($"点击了 {labels[j]}按钮（{++count}）");
+                button.LhOnClick += () => scope.ShowToast($"点击了 {labels[j]}按钮（{++count}）");
                 row.Children.Add(button);
             }
             panel.Children.Add(row);
@@ -46,14 +46,14 @@ internal static class ButtonPreviews
 
     private static LhButton SizeButton(DocPreviewScope scope, LhButtonSize size, string label)
     {
-        var button = new LhButton { Size = size, Text = label + "按钮" };
+        var button = new LhButton { LhSize = size, Text = label + "按钮" };
         var height = size switch
         {
             LhButtonSize.Small => LhTokens.Button.Height.Small,
             LhButtonSize.Large => LhTokens.Button.Height.Large,
             _ => LhTokens.Button.Height.Medium,
         };
-        button.Click += () => scope.ShowToast($"{label}按钮，height = {height}epx");
+        button.LhOnClick += () => scope.ShowToast($"{label}按钮，height = {height}epx");
         return button;
     }
 
@@ -61,16 +61,16 @@ internal static class ButtonPreviews
     public static UIElement States(DocPreviewScope scope)
     {
         var normal = new LhButton { Type = LhButtonType.Primary, Text = "正常" };
-        normal.Click += () => scope.ShowToast("正常按钮可点击");
+        normal.LhOnClick += () => scope.ShowToast("正常按钮可点击");
 
         var disabled = new LhButton { Type = LhButtonType.Primary, Text = "禁用", Disabled = true };
-        disabled.Click += () => scope.ShowToast("这不应出现：禁用按钮触发了 Click");
+        disabled.LhOnClick += () => scope.ShowToast("这不应出现：禁用按钮触发了 LhOnClick");
 
         var loading = new LhButton { Type = LhButtonType.Primary, Text = "加载中", Loading = true };
-        loading.Click += () => scope.ShowToast("这不应出现：加载按钮触发了 Click");
+        loading.LhOnClick += () => scope.ShowToast("这不应出现：加载按钮触发了 LhOnClick");
 
         var both = new LhButton { Type = LhButtonType.Primary, Text = "禁用优先", Disabled = true, Loading = true };
-        both.Click += () => scope.ShowToast("这不应出现：共存态触发了 Click");
+        both.LhOnClick += () => scope.ShowToast("这不应出现：共存态触发了 LhOnClick");
 
         return PreviewLayout.Column(
             PreviewLayout.Row(normal, disabled),
@@ -81,10 +81,10 @@ internal static class ButtonPreviews
     public static UIElement IconAndPattern(DocPreviewScope scope)
     {
         var search = new LhButton { Type = LhButtonType.Primary, Icon = "search", Text = "搜索" };
-        search.Click += () => scope.ShowToast("search 图标按钮");
+        search.LhOnClick += () => scope.ShowToast("search 图标按钮");
 
         var plain = new LhButton { Icon = "refresh", Text = "刷新" };
-        plain.Click += () => scope.ShowToast("refresh 图标按钮");
+        plain.LhOnClick += () => scope.ShowToast("refresh 图标按钮");
 
         var patternPrimary = new LhButton { Type = LhButtonType.Primary, BgPattern = true, Text = "主要花纹底" };
         var patternDefault = new LhButton { BgPattern = true, Text = "默认花纹底" };
@@ -98,7 +98,7 @@ internal static class ButtonPreviews
     public static UIElement Theme(DocPreviewScope scope)
     {
         var primary = new LhButton { Type = LhButtonType.Primary, Text = "主要按钮" };
-        primary.Click += () => scope.ShowToast("当前主题下的主色按钮");
+        primary.LhOnClick += () => scope.ShowToast("当前主题下的主色按钮");
         return PreviewLayout.Column(
             PreviewLayout.Row(primary, new LhButton { Text = "默认按钮" }),
             PreviewLayout.Row(

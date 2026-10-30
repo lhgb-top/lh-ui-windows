@@ -27,13 +27,13 @@ internal static class SwitchPreviews
     {
         return PreviewLayout.Column(
             PreviewLayout.Row(
-                new LhSwitch { Size = LhSwitchSize.Small, Checked = true },
+                new LhSwitch { LhSize = LhSwitchSize.Small, Checked = true },
                 new LhText { Text = "small" }),
             PreviewLayout.Row(
-                new LhSwitch { Size = LhSwitchSize.Medium, Checked = true },
+                new LhSwitch { LhSize = LhSwitchSize.Medium, Checked = true },
                 new LhText { Text = "medium（默认）" }),
             PreviewLayout.Row(
-                new LhSwitch { Size = LhSwitchSize.Large, Checked = true },
+                new LhSwitch { LhSize = LhSwitchSize.Large, Checked = true },
                 new LhText { Text = "large" }));
     }
 

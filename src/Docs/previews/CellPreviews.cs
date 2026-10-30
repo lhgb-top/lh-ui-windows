@@ -37,7 +37,7 @@ internal static class CellPreviews
             Value = "点击触发 Click",
             Clickable = true,
         };
-        clickable.Click += () => scope.ShowToast("Cell 的 Click 事件触发（Clickable = true）");
+        clickable.LhOnClick += () => scope.ShowToast("Cell 的 LhOnClick 事件触发（Clickable = true）");
 
         return PreviewLayout.Column(
             new LhCell { Title = "默认带分隔线（Bordered = true）" },

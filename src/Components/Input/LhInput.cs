@@ -28,11 +28,11 @@ public sealed class LhInput : UserControl
     public event Action<string>? ValueChange;
 
     /// <summary>获得焦点时触发</summary>
-    // new：契约事件 onFocus 按本库命名约定（去 on、PascalCase）即 Focus，与 UIElement.Focus(FocusState) 同名，刻意隐藏
-    public new event Action? Focus;
+    // 契约事件 lhOnFocus 按 spec 驼峰 → C# PascalCase 即 LhOnFocus（家族统一前缀，亦规避与 UIElement.Focus(FocusState) 同名）
+    public event Action? LhOnFocus;
 
     /// <summary>失去焦点时触发</summary>
-    public event Action? Blur;
+    public event Action? LhOnBlur;
 
     public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
         nameof(Value), typeof(string), typeof(LhInput),
@@ -46,8 +46,8 @@ public sealed class LhInput : UserControl
         nameof(Type), typeof(LhInputType), typeof(LhInput),
         new PropertyMetadata(LhInputType.Text, OnTypeChanged));
 
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhInputSize), typeof(LhInput),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhInputSize), typeof(LhInput),
         new PropertyMetadata(LhInputSize.Medium, OnAppearanceChanged));
 
     public static readonly DependencyProperty DisabledProperty = DependencyProperty.Register(
@@ -69,7 +69,7 @@ public sealed class LhInput : UserControl
     public string Value { get => (string)GetValue(ValueProperty); set => SetValue(ValueProperty, value); }
     public string Placeholder { get => (string)GetValue(PlaceholderProperty); set => SetValue(PlaceholderProperty, value); }
     public LhInputType Type { get => (LhInputType)GetValue(TypeProperty); set => SetValue(TypeProperty, value); }
-    public LhInputSize Size { get => (LhInputSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhInputSize LhSize { get => (LhInputSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
     public bool Disabled { get => (bool)GetValue(DisabledProperty); set => SetValue(DisabledProperty, value); }
     public bool Readonly { get => (bool)GetValue(ReadonlyProperty); set => SetValue(ReadonlyProperty, value); }
     public bool Clearable { get => (bool)GetValue(ClearableProperty); set => SetValue(ClearableProperty, value); }
@@ -110,7 +110,7 @@ public sealed class LhInput : UserControl
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhInputAppearance ResolveAppearance() =>
-        LhInputTokens.Resolve(Size, Disabled, _focused, LhTheme.Current);
+        LhInputTokens.Resolve(LhSize, Disabled, _focused, LhTheme.Current);
 
     private void ApplyAppearance()
     {
@@ -199,14 +199,14 @@ public sealed class LhInput : UserControl
     {
         _focused = true;
         ApplyAppearance();
-        Focus?.Invoke();
+        LhOnFocus?.Invoke();
     }
 
     private void OnLostFocus(object sender, RoutedEventArgs e)
     {
         _focused = false;
         ApplyAppearance();
-        Blur?.Invoke();
+        LhOnBlur?.Invoke();
     }
 
     private void OnThemeChanged(object? sender, EventArgs e) => ApplyAppearance();

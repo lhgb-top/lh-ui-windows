@@ -29,7 +29,7 @@ public sealed class LhCell : UserControl
     private readonly Rectangle _divider;
 
     /// <summary>点击回调；仅当 <see cref="Clickable"/> 为 true 时触发</summary>
-    public event Action? Click;
+    public event Action? LhOnClick;
 
     /// <summary>标题（spec 的 title 插槽）</summary>
     public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
@@ -80,7 +80,7 @@ public sealed class LhCell : UserControl
         _icon = new LhIcon
         {
             VerticalAlignment = VerticalAlignment.Center,
-            Size = LhIconSize.Medium,
+            LhSize = LhIconSize.Medium,
             Tone = LhIconTone.Regular,
             Visibility = Visibility.Collapsed,
         };
@@ -217,7 +217,7 @@ public sealed class LhCell : UserControl
     {
         if (Clickable)
         {
-            Click?.Invoke();
+            LhOnClick?.Invoke();
         }
     }
 

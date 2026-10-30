@@ -38,7 +38,7 @@ internal static class DialogPreviews
         dialog.Close += () => dialog.Visible = false;
 
         var open = new LhButton { Type = LhButtonType.Primary, Text = "打开对话框" };
-        open.Click += () => dialog.Visible = true;
+        open.LhOnClick += () => dialog.Visible = true;
 
         return Overlay(open, dialog);
     }
@@ -68,7 +68,7 @@ internal static class DialogPreviews
         {
             var type = types[i];
             var button = new LhButton { Type = LhButtonType.Primary, Text = labels[i] };
-            button.Click += () =>
+            button.LhOnClick += () =>
             {
                 dialog.Type = type;
                 dialog.Visible = true;

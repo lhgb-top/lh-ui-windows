@@ -27,11 +27,11 @@ public sealed class LhTextarea : UserControl
     public event Action<string>? ValueChange;
 
     /// <summary>获得焦点时触发</summary>
-    // new：契约事件 onFocus 按本库命名约定（去 on、PascalCase）即 Focus，与 UIElement.Focus(FocusState) 同名，刻意隐藏
-    public new event Action? Focus;
+    // 契约事件 lhOnFocus 按 spec 驼峰 → C# PascalCase 即 LhOnFocus（家族统一前缀，亦规避与 UIElement.Focus(FocusState) 同名）
+    public event Action? LhOnFocus;
 
     /// <summary>失去焦点时触发</summary>
-    public event Action? Blur;
+    public event Action? LhOnBlur;
 
     public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
         nameof(Value), typeof(string), typeof(LhTextarea),
@@ -181,14 +181,14 @@ public sealed class LhTextarea : UserControl
     {
         _focused = true;
         ApplyAppearance();
-        Focus?.Invoke();
+        LhOnFocus?.Invoke();
     }
 
     private void OnLostFocus(object sender, RoutedEventArgs e)
     {
         _focused = false;
         ApplyAppearance();
-        Blur?.Invoke();
+        LhOnBlur?.Invoke();
     }
 
     private void OnThemeChanged(object? sender, EventArgs e) => ApplyAppearance();

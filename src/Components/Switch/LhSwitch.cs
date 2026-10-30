@@ -36,15 +36,15 @@ public sealed class LhSwitch : UserControl
         nameof(Loading), typeof(bool), typeof(LhSwitch),
         new PropertyMetadata(false, OnAppearanceChanged));
 
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhSwitchSize), typeof(LhSwitch),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhSwitchSize), typeof(LhSwitch),
         new PropertyMetadata(LhSwitchSize.Medium, OnAppearanceChanged));
 
     public bool Checked { get => (bool)GetValue(CheckedProperty); set => SetValue(CheckedProperty, value); }
     public bool Disabled { get => (bool)GetValue(DisabledProperty); set => SetValue(DisabledProperty, value); }
     // new：契约 prop 名与 FrameworkElement.Loading 同名，刻意隐藏基类事件
     public new bool Loading { get => (bool)GetValue(LoadingProperty); set => SetValue(LoadingProperty, value); }
-    public LhSwitchSize Size { get => (LhSwitchSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhSwitchSize LhSize { get => (LhSwitchSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
 
     public LhSwitch()
     {
@@ -72,7 +72,7 @@ public sealed class LhSwitch : UserControl
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhSwitchAppearance ResolveAppearance() =>
-        LhSwitchTokens.Resolve(Checked, Disabled, Loading, Size, LhTheme.Current);
+        LhSwitchTokens.Resolve(Checked, Disabled, Loading, LhSize, LhTheme.Current);
 
     private void ApplyAppearance()
     {

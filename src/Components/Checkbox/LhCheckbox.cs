@@ -39,15 +39,15 @@ public sealed class LhCheckbox : UserControl
         nameof(Label), typeof(string), typeof(LhCheckbox),
         new PropertyMetadata(string.Empty, OnLabelChanged));
 
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhCheckboxSize), typeof(LhCheckbox),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhCheckboxSize), typeof(LhCheckbox),
         new PropertyMetadata(LhCheckboxSize.Medium, OnAppearanceChanged));
 
     public bool Checked { get => (bool)GetValue(CheckedProperty); set => SetValue(CheckedProperty, value); }
     public bool Indeterminate { get => (bool)GetValue(IndeterminateProperty); set => SetValue(IndeterminateProperty, value); }
     public bool Disabled { get => (bool)GetValue(DisabledProperty); set => SetValue(DisabledProperty, value); }
     public string Label { get => (string)GetValue(LabelProperty); set => SetValue(LabelProperty, value); }
-    public LhCheckboxSize Size { get => (LhCheckboxSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhCheckboxSize LhSize { get => (LhCheckboxSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
 
     public LhCheckbox()
     {
@@ -78,7 +78,7 @@ public sealed class LhCheckbox : UserControl
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhCheckboxAppearance ResolveAppearance() =>
-        LhCheckboxTokens.Resolve(Checked, Indeterminate, Disabled, Size, LhTheme.Current);
+        LhCheckboxTokens.Resolve(Checked, Indeterminate, Disabled, LhSize, LhTheme.Current);
 
     private void ApplyAppearance()
     {

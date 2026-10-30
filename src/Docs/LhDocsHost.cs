@@ -357,7 +357,7 @@ public sealed class LhDocsHost : UserControl
     /// <summary>全局 Toast：预览与宿主共用同一条指令式通道</summary>
     private void ShowToast(string text)
     {
-        _toast.Position = _toastPosition;
+        _toast.LhPosition = _toastPosition;
         _toast.Show(text);
     }
 

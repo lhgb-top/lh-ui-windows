@@ -20,10 +20,10 @@ internal static class ToastPreviews
         var toast = new LhToast { Duration = 2000 };
 
         var show = new LhButton { Type = LhButtonType.Primary, Text = "显示 Toast" };
-        show.Click += () => toast.Show("这是一条轻提示");
+        show.LhOnClick += () => toast.Show("这是一条轻提示");
 
         var hide = new LhButton { Type = LhButtonType.Default, Text = "立即隐藏" };
-        hide.Click += () => toast.Hide();
+        hide.LhOnClick += () => toast.Hide();
 
         toast.Close += () => scope.ShowToast("计时到期，Close 事件触发");
 
@@ -45,7 +45,7 @@ internal static class ToastPreviews
             var type = types[i];
             var message = messages[i];
             triggers[i] = new LhButton { Type = LhButtonType.Default, Text = labels[i] };
-            triggers[i].Click += () =>
+            triggers[i].LhOnClick += () =>
             {
                 toast.Type = type;
                 toast.Show(message);
@@ -66,23 +66,23 @@ internal static class ToastPreviews
         var toast = new LhToast();
 
         var top = new LhButton { Type = LhButtonType.Default, Text = "Top 顶部" };
-        top.Click += () =>
+        top.LhOnClick += () =>
         {
-            toast.Position = LhToastPosition.Top;
+            toast.LhPosition = LhToastPosition.Top;
             toast.Show("顶部定位");
         };
 
         var center = new LhButton { Type = LhButtonType.Default, Text = "Center 居中（默认）" };
-        center.Click += () =>
+        center.LhOnClick += () =>
         {
-            toast.Position = LhToastPosition.Center;
+            toast.LhPosition = LhToastPosition.Center;
             toast.Show("居中定位");
         };
 
         var bottom = new LhButton { Type = LhButtonType.Default, Text = "Bottom 底部" };
-        bottom.Click += () =>
+        bottom.LhOnClick += () =>
         {
-            toast.Position = LhToastPosition.Bottom;
+            toast.LhPosition = LhToastPosition.Bottom;
             scope.SetToastPosition(LhToastPosition.Bottom);
             toast.Show("底部定位");
         };

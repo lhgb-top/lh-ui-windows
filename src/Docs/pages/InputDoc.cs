@@ -81,12 +81,12 @@ internal sealed class InputDoc
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
                         new DocRow(new[] { "`ValueChange`", "值变化回调（受控）；disabled / readonly 时不触发", "`event Action<string>`", "—" }),
-                        new DocRow(new[] { "`Focus`", "获得焦点时触发", "`event Action`", "—" }),
-                        new DocRow(new[] { "`Blur`", "失去焦点时触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnFocus`", "获得焦点时触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnBlur`", "失去焦点时触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Value`", "当前文本值（受控）", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Placeholder`", "占位提示文字，取 `color.text.placeholder` 令牌", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Type`", "输入类型；password 时以圆点掩码显示", "`LhInputType`", "`Text`" }),
-                        new DocRow(new[] { "`Size`", "输入框尺寸，映射到尺寸令牌", "`LhInputSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "输入框尺寸，映射到尺寸令牌", "`LhInputSize`", "`Medium`" }),
                         new DocRow(new[] { "`Disabled`", "是否禁用（不响应输入、呈现禁用样式）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Readonly`", "是否只读（可聚焦但不接受输入）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Clearable`", "是否显示清除按钮", "`bool`", "`false`" }),

@@ -46,9 +46,9 @@ internal static class TagPreviews
     /// <summary>## 尺寸与关闭</summary>
     public static UIElement SizesAndClose(DocPreviewScope scope)
     {
-        var small = new LhTag { Size = LhTagSize.Small, Type = LhTagType.Primary, Text = "small" };
-        var medium = new LhTag { Size = LhTagSize.Medium, Type = LhTagType.Primary, Text = "medium（默认）" };
-        var large = new LhTag { Size = LhTagSize.Large, Type = LhTagType.Primary, Text = "large" };
+        var small = new LhTag { LhSize = LhTagSize.Small, Type = LhTagType.Primary, Text = "small" };
+        var medium = new LhTag { LhSize = LhTagSize.Medium, Type = LhTagType.Primary, Text = "medium（默认）" };
+        var large = new LhTag { LhSize = LhTagSize.Large, Type = LhTagType.Primary, Text = "large" };
 
         var closable = new LhTag { Type = LhTagType.Primary, Text = "可关闭", Closable = true };
         closable.Close += () => scope.ShowToast("Close 事件触发（标签已关闭）");

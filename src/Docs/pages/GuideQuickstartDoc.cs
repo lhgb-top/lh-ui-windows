@@ -45,7 +45,7 @@ internal sealed class GuideQuickstartDoc
                     "            Type = LhButtonType.Primary,",
                     "            Text = \"主要按钮\",",
                     "        };",
-                    "        button.Click += OnButtonClick;",
+                    "        button.LhOnClick += OnButtonClick;",
                     "",
                     "        Content = new StackPanel { Children = { button } };",
                     "    }",
@@ -69,9 +69,9 @@ internal sealed class GuideQuickstartDoc
                     "new LhButton { Type = LhButtonType.Info,      Text = \"信息\" };",
                     "",
                     "// 三种尺寸",
-                    "new LhButton { Size = LhButtonSize.Small,  Text = \"小型\" };",
-                    "new LhButton { Size = LhButtonSize.Medium, Text = \"中型\" };   // 默认",
-                    "new LhButton { Size = LhButtonSize.Large,  Text = \"大型\" };"
+                    "new LhButton { LhSize = LhButtonSize.Small,  Text = \"小型\" };",
+                    "new LhButton { LhSize = LhButtonSize.Medium, Text = \"中型\" };   // 默认",
+                    "new LhButton { LhSize = LhButtonSize.Large,  Text = \"大型\" };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(

@@ -20,8 +20,8 @@ public sealed class LhIcon : UserControl
     private readonly TextBlock _glyph;
 
     /// <summary>图标尺寸</summary>
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhIconSize), typeof(LhIcon),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhIconSize), typeof(LhIcon),
         new PropertyMetadata(LhIconSize.Medium, OnVisualPropertyChanged));
 
     /// <summary>图标色调（决定文字色）</summary>
@@ -35,7 +35,7 @@ public sealed class LhIcon : UserControl
         nameof(Name), typeof(string), typeof(LhIcon),
         new PropertyMetadata(string.Empty, OnVisualPropertyChanged));
 
-    public LhIconSize Size { get => (LhIconSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhIconSize LhSize { get => (LhIconSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
     public LhIconTone Tone { get => (LhIconTone)GetValue(ToneProperty); set => SetValue(ToneProperty, value); }
     public new string Name { get => (string)GetValue(NameProperty); set => SetValue(NameProperty, value); }
 
@@ -56,7 +56,7 @@ public sealed class LhIcon : UserControl
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhIconAppearance ResolveAppearance() =>
-        LhIconTokens.Resolve(Size, Tone, Name, LhTheme.Current);
+        LhIconTokens.Resolve(LhSize, Tone, Name, LhTheme.Current);
 
     private void ApplyAppearance()
     {

@@ -133,7 +133,7 @@ public static class DemoSections
     {
         FrameworkElement Clickable(LhButton button)
         {
-            button.Click += () => ctx.ShowToast($"点击了「{button.Text}」", LhToastType.Default);
+            button.LhOnClick += () => ctx.ShowToast($"点击了「{button.Text}」", LhToastType.Default);
             return button;
         }
 
@@ -149,9 +149,9 @@ public static class DemoSections
                 Clickable(new LhButton { Type = LhButtonType.Danger, Text = "危险" }),
                 Clickable(new LhButton { Type = LhButtonType.Info, Text = "信息" })),
             Row(
-                Clickable(new LhButton { Size = LhButtonSize.Small, Text = "小型" }),
-                Clickable(new LhButton { Size = LhButtonSize.Medium, Text = "中型" }),
-                Clickable(new LhButton { Size = LhButtonSize.Large, Text = "大型" })),
+                Clickable(new LhButton { LhSize = LhButtonSize.Small, Text = "小型" }),
+                Clickable(new LhButton { LhSize = LhButtonSize.Medium, Text = "中型" }),
+                Clickable(new LhButton { LhSize = LhButtonSize.Large, Text = "大型" })),
             Row(
                 new LhButton { Type = LhButtonType.Primary, Disabled = true, Text = "禁用" },
                 new LhButton { Type = LhButtonType.Primary, Loading = true, Text = "加载中" },
@@ -169,9 +169,9 @@ public static class DemoSections
             "Icon 图标",
             "尺寸映射 icon.size.*；色调映射语义色。字形由 LhIconTokens.GlyphFor 解析，未登记名回退 ◆。",
             Row(
-                new LhIcon { Name = "search", Size = LhIconSize.Small },
-                new LhIcon { Name = "search", Size = LhIconSize.Medium },
-                new LhIcon { Name = "search", Size = LhIconSize.Large }),
+                new LhIcon { Name = "search", LhSize = LhIconSize.Small },
+                new LhIcon { Name = "search", LhSize = LhIconSize.Medium },
+                new LhIcon { Name = "search", LhSize = LhIconSize.Large }),
             Row(
                 new LhIcon { Name = "check", Tone = LhIconTone.Success },
                 new LhIcon { Name = "warning", Tone = LhIconTone.Warning },
@@ -211,8 +211,8 @@ public static class DemoSections
             Row(
                 new LhTag { Type = LhTagType.Primary, Round = true, Text = "圆角" },
                 Closable(new LhTag { Type = LhTagType.Primary, Text = "可关闭" }),
-                new LhTag { Size = LhTagSize.Small, Text = "小型" },
-                new LhTag { Size = LhTagSize.Large, Text = "大型" }));
+                new LhTag { LhSize = LhTagSize.Small, Text = "小型" },
+                new LhTag { LhSize = LhTagSize.Large, Text = "大型" }));
     }
 
     // —— 4. Cell ——
@@ -228,7 +228,7 @@ public static class DemoSections
             Clickable = true,
             Bordered = true,
         };
-        clickable.Click += () => ctx.ShowToast("点击了单元格", LhToastType.Info);
+        clickable.LhOnClick += () => ctx.ShowToast("点击了单元格", LhToastType.Info);
 
         var required = new LhCell
         {
@@ -267,9 +267,9 @@ public static class DemoSections
                 new LhText { Text = "占位 placeholder", Tone = LhTextTone.Placeholder },
                 new LhText { Text = "选中 selected", Tone = LhTextTone.Selected }),
             Column(
-                new LhText { Text = "左对齐 start", Align = LhTextAlign.Start },
-                new LhText { Text = "居中 center", Align = LhTextAlign.Center },
-                new LhText { Text = "右对齐 end", Align = LhTextAlign.End }));
+                new LhText { Text = "左对齐 start", LhAlign = LhTextAlign.Start },
+                new LhText { Text = "居中 center", LhAlign = LhTextAlign.Center },
+                new LhText { Text = "右对齐 end", LhAlign = LhTextAlign.End }));
     }
 
     // —— 6. Input ——
@@ -293,9 +293,9 @@ public static class DemoSections
             "受控组件：监听 ValueChange 回写 Value。Password 掩码显示；Clearable 出现清除符；Maxlength 截断。",
             Column(basic, password, limited),
             Column(
-                new LhInput { Size = LhInputSize.Small, Placeholder = "小型输入框" },
-                new LhInput { Size = LhInputSize.Medium, Placeholder = "中型输入框（默认）" },
-                new LhInput { Size = LhInputSize.Large, Placeholder = "大型输入框" }),
+                new LhInput { LhSize = LhInputSize.Small, Placeholder = "小型输入框" },
+                new LhInput { LhSize = LhInputSize.Medium, Placeholder = "中型输入框（默认）" },
+                new LhInput { LhSize = LhInputSize.Large, Placeholder = "大型输入框" }),
             Column(
                 new LhInput { Placeholder = "禁用输入框", Disabled = true },
                 new LhInput { Placeholder = "只读输入框", Readonly = true, Value = "只读值" }));
@@ -342,9 +342,9 @@ public static class DemoSections
                 Labeled(new LhCheckbox { Indeterminate = true }, "粉彩瓷"),
                 Labeled(new LhCheckbox { Disabled = true, Checked = true }, "汝窑（禁用）")),
             Row(
-                Labeled(new LhCheckbox { Size = LhCheckboxSize.Small, Checked = true }, "小型"),
-                Labeled(new LhCheckbox { Size = LhCheckboxSize.Medium, Checked = true }, "中型"),
-                Labeled(new LhCheckbox { Size = LhCheckboxSize.Large, Checked = true }, "大型")));
+                Labeled(new LhCheckbox { LhSize = LhCheckboxSize.Small, Checked = true }, "小型"),
+                Labeled(new LhCheckbox { LhSize = LhCheckboxSize.Medium, Checked = true }, "中型"),
+                Labeled(new LhCheckbox { LhSize = LhCheckboxSize.Large, Checked = true }, "大型")));
     }
 
     // —— 9. Radio ——
@@ -371,8 +371,8 @@ public static class DemoSections
             "单选由宿主维护互斥（监听 Change 置兄弟为未选中）；选中圆点直径取 dotScale。",
             Row(r1, r2, r3),
             Row(
-                new LhRadio { Label = "小型", Size = LhRadioSize.Small, Checked = true },
-                new LhRadio { Label = "大型", Size = LhRadioSize.Large },
+                new LhRadio { Label = "小型", LhSize = LhRadioSize.Small, Checked = true },
+                new LhRadio { Label = "大型", LhSize = LhRadioSize.Large },
                 new LhRadio { Label = "禁用", Disabled = true, Checked = true }));
     }
 
@@ -395,9 +395,9 @@ public static class DemoSections
                 new LhSwitch { Checked = true, Disabled = true },
                 new LhSwitch { Checked = true, Loading = true }),
             Row(
-                new LhSwitch { Size = LhSwitchSize.Small, Checked = true },
-                new LhSwitch { Size = LhSwitchSize.Medium, Checked = true },
-                new LhSwitch { Size = LhSwitchSize.Large, Checked = true }));
+                new LhSwitch { LhSize = LhSwitchSize.Small, Checked = true },
+                new LhSwitch { LhSize = LhSwitchSize.Medium, Checked = true },
+                new LhSwitch { LhSize = LhSwitchSize.Large, Checked = true }));
     }
 
     // —— 11. Loading ——
@@ -408,9 +408,9 @@ public static class DemoSections
             "Loading 加载",
             "ProgressRing 环形旋转；size 映射直径，tone 映射环色。",
             Row(
-                new LhLoading { Size = LhLoadingSize.Small },
-                new LhLoading { Size = LhLoadingSize.Medium },
-                new LhLoading { Size = LhLoadingSize.Large }),
+                new LhLoading { LhSize = LhLoadingSize.Small },
+                new LhLoading { LhSize = LhLoadingSize.Medium },
+                new LhLoading { LhSize = LhLoadingSize.Large }),
             Row(
                 new LhLoading { Tone = LhLoadingTone.Primary },
                 new LhLoading { Tone = LhLoadingTone.Success },
@@ -425,7 +425,7 @@ public static class DemoSections
     {
         FrameworkElement Opener(LhButton button, LhDialogType type, string title, string content)
         {
-            button.Click += () => ctx.ShowDialog(title, content, type);
+            button.LhOnClick += () => ctx.ShowDialog(title, content, type);
             return button;
         }
 
@@ -448,7 +448,7 @@ public static class DemoSections
     {
         FrameworkElement Opener(LhButton button, LhToastType type, string text)
         {
-            button.Click += () => ctx.ShowToast(text, type);
+            button.LhOnClick += () => ctx.ShowToast(text, type);
             return button;
         }
 
@@ -471,7 +471,7 @@ public static class DemoSections
         var options = new[] { "青花瓷", "粉彩瓷", "汝窑", "哥窑", "定窑" };
 
         var opener = Primary("打开选择器");
-        opener.Click += () => ctx.ShowPicker(options, index =>
+        opener.LhOnClick += () => ctx.ShowPicker(options, index =>
             ctx.ShowToast($"已选择：{options[index]}", LhToastType.Success));
 
         return Section(

@@ -67,7 +67,7 @@ internal sealed class SwitchDoc
                         new DocRow(new[] { "`Checked`", "是否开启", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Disabled`", "是否禁用（不响应点击且呈现禁用样式）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Loading`", "是否加载中（滑块位置显示加载环且不响应点击）", "`bool`", "`false`" }),
-                        new DocRow(new[] { "`Size`", "开关尺寸，映射到 `switch.width` / `switch.height` 令牌", "`LhSwitchSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "开关尺寸，映射到 `switch.width` / `switch.height` 令牌", "`LhSwitchSize`", "`Medium`" }),
                     }),
                     new DocTable("LhSwitchSize", new[] { "值", "width", "height" }, new[]
                     {

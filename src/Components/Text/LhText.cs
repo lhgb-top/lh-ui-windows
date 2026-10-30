@@ -35,8 +35,8 @@ public sealed class LhText : UserControl
         new PropertyMetadata(LhTextTone.Regular, OnAppearanceChanged));
 
     /// <summary>水平对齐（非设计令牌，映射到框架枚举）</summary>
-    public static readonly DependencyProperty AlignProperty = DependencyProperty.Register(
-        nameof(Align), typeof(LhTextAlign), typeof(LhText),
+    public static readonly DependencyProperty LhAlignProperty = DependencyProperty.Register(
+        nameof(LhAlign), typeof(LhTextAlign), typeof(LhText),
         new PropertyMetadata(LhTextAlign.Start, OnAppearanceChanged));
 
     /// <summary>文字内容（spec 的 default 插槽）</summary>
@@ -47,7 +47,7 @@ public sealed class LhText : UserControl
     public LhTextLevel Level { get => (LhTextLevel)GetValue(LevelProperty); set => SetValue(LevelProperty, value); }
     public LhTextWeight Weight { get => (LhTextWeight)GetValue(WeightProperty); set => SetValue(WeightProperty, value); }
     public LhTextTone Tone { get => (LhTextTone)GetValue(ToneProperty); set => SetValue(ToneProperty, value); }
-    public LhTextAlign Align { get => (LhTextAlign)GetValue(AlignProperty); set => SetValue(AlignProperty, value); }
+    public LhTextAlign LhAlign { get => (LhTextAlign)GetValue(LhAlignProperty); set => SetValue(LhAlignProperty, value); }
     public string Text { get => (string)GetValue(TextProperty); set => SetValue(TextProperty, value); }
 
     public LhText()
@@ -78,7 +78,7 @@ public sealed class LhText : UserControl
         _text.FontSize = LhEpx.Px(a.FontSize);
         _text.FontWeight = LhFontWeight.FromToken(a.FontWeight);
         _text.Foreground = new SolidColorBrush(a.FontColor);
-        _text.TextAlignment = LhTextTokens.AlignFor(Align);
+        _text.TextAlignment = LhTextTokens.AlignFor(LhAlign);
         _text.LineHeight = LhEpx.Px(a.FontSize * a.LineHeight);
         _text.IsColorFontEnabled = false;
     }

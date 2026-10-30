@@ -16,7 +16,7 @@ internal static class InputPreviews
     {
         var input = new LhInput { Placeholder = "请输入内容" };
         input.ValueChange += value => scope.ShowToast($"ValueChange：{value}");
-        input.Blur += () => scope.ShowToast("Blur 失焦事件");
+        input.LhOnBlur += () => scope.ShowToast("Blur 失焦事件");
 
         return PreviewLayout.Column(
             input,
@@ -27,9 +27,9 @@ internal static class InputPreviews
     public static UIElement Sizes(DocPreviewScope scope)
     {
         return PreviewLayout.Column(
-            new LhInput { Size = LhInputSize.Small, Placeholder = "small" },
-            new LhInput { Size = LhInputSize.Medium, Placeholder = "medium（默认）" },
-            new LhInput { Size = LhInputSize.Large, Placeholder = "large" });
+            new LhInput { LhSize = LhInputSize.Small, Placeholder = "small" },
+            new LhInput { LhSize = LhInputSize.Medium, Placeholder = "medium（默认）" },
+            new LhInput { LhSize = LhInputSize.Large, Placeholder = "large" });
     }
 
     /// <summary>## 类型与状态</summary>

@@ -41,7 +41,7 @@ internal sealed class ToastDoc
                     "var toast = new LhToast",
                     "{",
                     "    Duration = 2000,",
-                    "    Position = LhToastPosition.Center,",
+                    "    LhPosition = LhToastPosition.Center,",
                     "    Controller = controller,",
                     "};",
                     "toast.Close += () => { /* 计时到期自动隐藏后触发 */ };",
@@ -63,7 +63,7 @@ internal sealed class ToastDoc
                 "定位",
                 new[]
                 {
-                    "`Position` 决定在可用区域内的定位；上下两端留 `spacing.xl` 边距（center 时无留白）。"
+                    "`LhPosition` 决定在可用区域内的定位；上下两端留 `spacing.xl` 边距（center 时无留白）。"
                 },
                 ToastPreviews.Position,
                 Array.Empty<string>(),
@@ -80,7 +80,7 @@ internal sealed class ToastDoc
                         new DocRow(new[] { "`Close`", "计时到期自动隐藏时触发；Hide() 主动隐藏不触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Type`", "语义类型；非 default 时在文字前绘制对应语义色圆点", "`LhToastType`", "`Default`" }),
                         new DocRow(new[] { "`Duration`", "自动隐藏时长（毫秒）", "`int`", "`2000`" }),
-                        new DocRow(new[] { "`Position`", "在可用区域内的定位", "`LhToastPosition`", "`Center`" }),
+                        new DocRow(new[] { "`LhPosition`", "在可用区域内的定位", "`LhToastPosition`", "`Center`" }),
                         new DocRow(new[] { "`Controller`", "宿主调用句柄（可选；Loaded 后注册 Show/Hide）", "`LhToastController?`", "`null`" }),
                     }),
                     new DocTable("方法", new[] { "方法", "说明" }, new[]

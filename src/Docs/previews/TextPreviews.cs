@@ -42,9 +42,9 @@ internal static class TextPreviews
     public static UIElement Alignment(DocPreviewScope scope)
     {
         return PreviewLayout.Column(
-            new LhText { Align = LhTextAlign.Start, Text = "Start 左对齐（默认）" },
-            new LhText { Align = LhTextAlign.Center, Text = "Center 居中" },
-            new LhText { Align = LhTextAlign.End, Text = "End 右对齐" });
+            new LhText { LhAlign = LhTextAlign.Start, Text = "Start 左对齐（默认）" },
+            new LhText { LhAlign = LhTextAlign.Center, Text = "Center 居中" },
+            new LhText { LhAlign = LhTextAlign.End, Text = "End 右对齐" });
     }
 
     /// <summary>## 明暗主题</summary>

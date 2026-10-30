@@ -91,9 +91,9 @@ public sealed class LhDialog : UserControl
 
         // 取消按钮固定 default 类型；确认按钮按 type 映射语义色
         _cancelButton = new LhButton { Type = LhButtonType.Default };
-        _cancelButton.Click += OnCancelClick;
+        _cancelButton.LhOnClick += OnCancelClick;
         _confirmButton = new LhButton();
-        _confirmButton.Click += OnConfirmClick;
+        _confirmButton.LhOnClick += OnConfirmClick;
 
         var buttons = new StackPanel
         {

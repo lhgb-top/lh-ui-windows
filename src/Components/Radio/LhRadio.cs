@@ -42,15 +42,15 @@ public sealed class LhRadio : UserControl
         nameof(Value), typeof(string), typeof(LhRadio),
         new PropertyMetadata(string.Empty));
 
-    public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-        nameof(Size), typeof(LhRadioSize), typeof(LhRadio),
+    public static readonly DependencyProperty LhSizeProperty = DependencyProperty.Register(
+        nameof(LhSize), typeof(LhRadioSize), typeof(LhRadio),
         new PropertyMetadata(LhRadioSize.Medium, OnAppearanceChanged));
 
     public bool Checked { get => (bool)GetValue(CheckedProperty); set => SetValue(CheckedProperty, value); }
     public bool Disabled { get => (bool)GetValue(DisabledProperty); set => SetValue(DisabledProperty, value); }
     public string Label { get => (string)GetValue(LabelProperty); set => SetValue(LabelProperty, value); }
     public string Value { get => (string)GetValue(ValueProperty); set => SetValue(ValueProperty, value); }
-    public LhRadioSize Size { get => (LhRadioSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+    public LhRadioSize LhSize { get => (LhRadioSize)GetValue(LhSizeProperty); set => SetValue(LhSizeProperty, value); }
 
     public LhRadio()
     {
@@ -85,7 +85,7 @@ public sealed class LhRadio : UserControl
 
     /// <summary>按当前属性与主题色板解析外观（测试与组件共用同一条解析路径）</summary>
     public LhRadioAppearance ResolveAppearance() =>
-        LhRadioTokens.Resolve(Checked, Disabled, Size, LhTheme.Current);
+        LhRadioTokens.Resolve(Checked, Disabled, LhSize, LhTheme.Current);
 
     private void ApplyAppearance()
     {

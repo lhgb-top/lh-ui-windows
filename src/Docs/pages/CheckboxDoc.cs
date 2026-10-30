@@ -73,7 +73,7 @@ internal sealed class CheckboxDoc
                         new DocRow(new[] { "`Indeterminate`", "是否为不确定态（横杠指示）；点击后变为选中", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Disabled`", "是否禁用（不响应点击且呈现禁用样式）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Label`", "文字标签（绘制在方框右侧）", "`string`", "`\"\"`" }),
-                        new DocRow(new[] { "`Size`", "方框尺寸，映射到 `checkbox.size.*` 令牌", "`LhCheckboxSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "方框尺寸，映射到 `checkbox.size.*` 令牌", "`LhCheckboxSize`", "`Medium`" }),
                     }),
                     new DocTable("LhCheckboxSize", new[] { "值", "尺寸令牌" }, new[]
                     {

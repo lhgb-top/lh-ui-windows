@@ -42,7 +42,7 @@ internal sealed class IconDoc
                     "var icon = new LhIcon",
                     "{",
                     "    Name = \"search\",",
-                    "    Size = LhIconSize.Large,",
+                    "    LhSize = LhIconSize.Large,",
                     "};"
                 },
                 Array.Empty<DocTable>()),
@@ -85,7 +85,7 @@ internal sealed class IconDoc
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
                         new DocRow(new[] { "`Name`", "图标名（本地图标表解析，未登记名回退 `◆`）", "`string`", "`\"\"`" }),
-                        new DocRow(new[] { "`Size`", "图标尺寸，映射到 `icon.size.*` 令牌", "`LhIconSize`", "`Medium`" }),
+                        new DocRow(new[] { "`LhSize`", "图标尺寸，映射到 `icon.size.*` 令牌", "`LhIconSize`", "`Medium`" }),
                         new DocRow(new[] { "`Tone`", "图标色调，映射到语义色 / 文字色令牌", "`LhIconTone`", "`Regular`" }),
                     }),
                     new DocTable("LhIconSize", new[] { "值", "尺寸令牌" }, new[]

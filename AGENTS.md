@@ -203,3 +203,12 @@ core 的 codegen 产物是 `LhTokens`（明）与 `LhDarkTokens`（暗）两个�
 - 加新组件：先在 core 仓写 `specs/<comp>.json` + `cases/<comp>.json`（codegen 不生成 UI），
   再本仓建 `src/Components/<Comp>/`（`Lh<Comp>Tokens.cs` + `Lh<Comp>.cs` 两文件），翻译黄金用例为
   `tests/Lh<Comp>Tests.cs`，最后按红线 7 同步全部聚合点。
+
+## 备案/版权（docs 站）
+
+文档站页脚的备案（ICP / 公安）与版权行走「同步产物 + 适配器」：
+`docs/.beian/beian.json` 由工作区根 `scripts/sync-beian.mjs` 从
+`lh-feng-mo-workspace` 真源生成（**同步产物，禁止手改**；真源只读，改真源后重跑同步）；
+站点差异化（独立备案号、隐藏公安备案、许可证链接等）写 `docs/.beian/beian.local.json`，
+同步时与真源深合并。适配器在 docs/.vitepress/beian.ts。
+完整机制、渲染格式与变更流程见家族 [docs/备案资源同步方案.md](../docs/备案资源同步方案.md)。

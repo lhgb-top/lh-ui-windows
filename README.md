@@ -2,6 +2,8 @@
 
 > lh-ui 家族 · 原生血脉 · Windows 端 —— **C# + WinUI 3**（.NET 8，Windows App SDK）UI 组件库。
 >
+> 📖 **文档站**：<https://www.lhgb.top/lhui/windows/>
+>
 > 同品牌的设计令牌、组件契约与黄金用例定义在 `lh-ui-core`（构建期中心，运行时零 JS）；
 > 本仓只手写 WinUI 组件。与 web 血脉（plus / vue2 / react / uniapp）互相独立、不共享运行时代码，
 > 视觉一致性靠《设计语言基线》人工对齐。
@@ -40,7 +42,7 @@ var button = new LhButton
     Type = LhButtonType.Primary,
     Text = "主要按钮",
 };
-button.Click += (sender, args) => { /* 处理点击 */ };
+button.LhOnClick += (sender, args) => { /* 处理点击 */ };
 ```
 
 ### 3. 演示应用与测试

@@ -77,9 +77,13 @@ function quoteLines(lines) {
 
 // ---------- config.ts 分组顺序解析（侧边栏顺序即首页顺序）----------
 // 按括号深度切出整个数组字面量（config.ts 里的字符串不含方括号，深度计数安全）
+// 关键字后到首个 '[' 之间允许有类型注解（`const componentGroups: Group[] = [`），
+// 兼容旧形态 `const componentGroups = [`。注意注解里的 `[]` 本身就是一对方括号，
+// 必须先跳到赋值 '=' 再找数组起点，否则会把注解当成空数组切出来。
 function sliceArrayLiteral(src, startKeyword) {
   const kw = src.indexOf(startKeyword)
-  const br = src.indexOf('[', kw)
+  const eq = src.indexOf('=', kw)
+  const br = src.indexOf('[', eq)
   let depth = 0
   for (let i = br; i < src.length; i++) {
     if (src[i] === '[') depth++
@@ -95,20 +99,23 @@ function parseConfig() {
   const src = readFileSync(resolve(DOCS, '.vitepress/config.ts'), 'utf-8')
   const out = { guides: [], components: [] }
 
-  const guideSeg = sliceArrayLiteral(src, 'const guideGroups =')
-  const compSeg = sliceArrayLiteral(src, 'const componentGroups =')
+  const guideSeg = sliceArrayLiteral(src, 'const guideGroups')
+  const compSeg = sliceArrayLiteral(src, 'const componentGroups')
 
-  const pairRe = /text:\s*'([^']+)'[^}]*?slug:\s*'([^']+)'/g
+  // 条目形态兼容两种：旧 `{ text, slug }` 与 i18n 后 `{ slug, labels: {'zh-CN': ...} }`。
+  // 生成器只消费 slug 与分组的 zh-CN 文本（分组名映射 GROUP_TO_ENUM），text/其余 label 不取。
+  const slugRe = /slug:\s*'([^']+)'/g
   let m
-  while ((m = pairRe.exec(guideSeg))) out.guides.push({ text: m[1], slug: m[2] })
+  while ((m = slugRe.exec(guideSeg))) out.guides.push({ slug: m[1] })
 
-  const groupRe = /text:\s*'([^']+)'\s*,\s*items:\s*\[([\s\S]*?)\]/g
+  const groupRe = /(?:text:\s*'([^']+)'|'zh-CN':\s*'([^']+)')[\s\S]*?\bitems:\s*\[([\s\S]*?)\]/g
   while ((m = groupRe.exec(compSeg))) {
+    const group = m[1] ?? m[2]
     const items = []
-    const itemRe = /text:\s*'([^']+)'[^}]*?slug:\s*'([^']+)'/g
+    const itemRe = /slug:\s*'([^']+)'/g
     let im
-    while ((im = itemRe.exec(m[2]))) items.push({ text: im[1], slug: im[2] })
-    out.components.push({ group: m[1], items })
+    while ((im = itemRe.exec(m[3]))) items.push({ slug: im[1] })
+    out.components.push({ group, items })
   }
   return out
 }

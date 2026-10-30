@@ -88,8 +88,8 @@ textarea.ValueChange += value => { /* 受控：回写 Value */ };
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `ValueChange` | 值变化回调（受控）；disabled / readonly 时不触发 | `event Action<string>` | — |
-| `Focus` | 获得焦点时触发 | `event Action` | — |
-| `Blur` | 失去焦点时触发 | `event Action` | — |
+| `LhOnFocus` | 获得焦点时触发 | `event Action` | — |
+| `LhOnBlur` | 失去焦点时触发 | `event Action` | — |
 | `Value` | 当前文本值（受控） | `string` | `""` |
 | `Placeholder` | 占位提示文字，取 `color.text.placeholder` 令牌 | `string` | `""` |
 | `Rows` | 初始可见行数；高度随行数与内容增长 | `int` | `3` |

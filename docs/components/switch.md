@@ -64,7 +64,7 @@ sw.Change += isChecked => { };
 | `Checked` | 是否开启 | `bool` | `false` |
 | `Disabled` | 是否禁用（不响应点击且呈现禁用样式） | `bool` | `false` |
 | `Loading` | 是否加载中（滑块位置显示加载环且不响应点击） | `bool` | `false` |
-| `Size` | 开关尺寸，映射到 `switch.width` / `switch.height` 令牌 | `LhSwitchSize` | `Medium` |
+| `LhSize` | 开关尺寸，映射到 `switch.width` / `switch.height` 令牌 | `LhSwitchSize` | `Medium` |
 
 ### LhSwitchSize
 

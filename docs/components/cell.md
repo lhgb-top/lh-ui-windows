@@ -88,7 +88,7 @@ var cell = new LhCell
     Clickable = true,
     Bordered = true,
 };
-cell.Click += () => { /* 仅 Clickable 为 true 时触发 */ };
+cell.LhOnClick += () => { /* 仅 Clickable 为 true 时触发 */ };
 ```
 
 ## 明暗主题
@@ -115,7 +115,7 @@ cell.Click += () => { /* 仅 Clickable 为 true 时触发 */ };
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `Click` | 点击事件；仅 `Clickable` 为 true 时触发 | `event Action` | — |
+| `LhOnClick` | 点击事件；仅 `Clickable` 为 true 时触发 | `event Action` | — |
 | `Title` | 标题（spec 的 title 插槽） | `string` | `""` |
 | `Label` | 标题下说明文字（label 插槽） | `string` | `""` |
 | `Value` | 右侧值文本（value 插槽） | `string` | `""` |

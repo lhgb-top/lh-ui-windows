@@ -109,7 +109,7 @@ tag.Close += () => { /* 点击关闭符 */ };
 | `Close` | 点击关闭符时触发（需 `Closable` 为 true） | `event Action` | — |
 | `Text` | 标签文字内容（spec 的 default 插槽） | `string` | `""` |
 | `Type` | 语义类型，决定底色、文字色与描边色 | `LhTagType` | `Default` |
-| `Size` | 标签尺寸，映射到尺寸令牌 | `LhTagSize` | `Medium` |
+| `LhSize` | 标签尺寸，映射到尺寸令牌 | `LhTagSize` | `Medium` |
 | `Plain` | 是否为浅底描边形态 | `bool` | `false` |
 | `Round` | 是否为胶囊形态（圆角取高度一半） | `bool` | `false` |
 | `Closable` | 是否显示关闭符 | `bool` | `false` |

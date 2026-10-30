@@ -105,7 +105,7 @@ checkbox.Change += isChecked => { };
 | `Indeterminate` | 是否为不确定态（横杠指示）；点击后变为选中 | `bool` | `false` |
 | `Disabled` | 是否禁用（不响应点击且呈现禁用样式） | `bool` | `false` |
 | `Label` | 文字标签（绘制在方框右侧） | `string` | `""` |
-| `Size` | 方框尺寸，映射到 `checkbox.size.*` 令牌 | `LhCheckboxSize` | `Medium` |
+| `LhSize` | 方框尺寸，映射到 `checkbox.size.*` 令牌 | `LhCheckboxSize` | `Medium` |
 
 ### LhCheckboxSize
 

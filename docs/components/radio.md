@@ -102,7 +102,7 @@ radio.Change += isChecked => { /* 仅未选中且未禁用时触发；宿主维�
 | `Disabled` | 是否禁用（不响应点击且呈现禁用样式） | `bool` | `false` |
 | `Label` | 文字标签（绘制在圆环右侧） | `string` | `""` |
 | `Value` | 单选值（组内标识，组件本身不含组逻辑） | `string` | `""` |
-| `Size` | 圆环尺寸，映射到 `radio.size.*` 令牌 | `LhRadioSize` | `Medium` |
+| `LhSize` | 圆环尺寸，映射到 `radio.size.*` 令牌 | `LhRadioSize` | `Medium` |
 
 ### LhRadioSize
 

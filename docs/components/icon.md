@@ -30,7 +30,7 @@ Windows 端当前用 unicode 字形占位（`LhIconTokens.GlyphFor`，TextBlock 
 var icon = new LhIcon
 {
     Name = "search",
-    Size = LhIconSize.Large,
+    LhSize = LhIconSize.Large,
 };
 ```
 
@@ -104,7 +104,7 @@ var icon = new LhIcon
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `Name` | 图标名（本地图标表解析，未登记名回退 `◆`） | `string` | `""` |
-| `Size` | 图标尺寸，映射到 `icon.size.*` 令牌 | `LhIconSize` | `Medium` |
+| `LhSize` | 图标尺寸，映射到 `icon.size.*` 令牌 | `LhIconSize` | `Medium` |
 | `Tone` | 图标色调，映射到语义色 / 文字色令牌 | `LhIconTone` | `Regular` |
 
 ### LhIconSize

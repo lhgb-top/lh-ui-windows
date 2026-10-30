@@ -100,12 +100,12 @@ input.ValueChange += value => { /* 受控：回写 Value */ };
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `ValueChange` | 值变化回调（受控）；disabled / readonly 时不触发 | `event Action<string>` | — |
-| `Focus` | 获得焦点时触发 | `event Action` | — |
-| `Blur` | 失去焦点时触发 | `event Action` | — |
+| `LhOnFocus` | 获得焦点时触发 | `event Action` | — |
+| `LhOnBlur` | 失去焦点时触发 | `event Action` | — |
 | `Value` | 当前文本值（受控） | `string` | `""` |
 | `Placeholder` | 占位提示文字，取 `color.text.placeholder` 令牌 | `string` | `""` |
 | `Type` | 输入类型；password 时以圆点掩码显示 | `LhInputType` | `Text` |
-| `Size` | 输入框尺寸，映射到尺寸令牌 | `LhInputSize` | `Medium` |
+| `LhSize` | 输入框尺寸，映射到尺寸令牌 | `LhInputSize` | `Medium` |
 | `Disabled` | 是否禁用（不响应输入、呈现禁用样式） | `bool` | `false` |
 | `Readonly` | 是否只读（可聚焦但不接受输入） | `bool` | `false` |
 | `Clearable` | 是否显示清除按钮 | `bool` | `false` |

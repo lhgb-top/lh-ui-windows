@@ -24,7 +24,7 @@ var controller = new LhToastController();
 var toast = new LhToast
 {
     Duration = 2000,
-    Position = LhToastPosition.Center,
+    LhPosition = LhToastPosition.Center,
     Controller = controller,
 };
 toast.Close += () => { /* 计时到期自动隐藏后触发 */ };
@@ -49,7 +49,7 @@ controller.Show("已保存");
 
 ## 定位
 
-`Position` 决定在可用区域内的定位；上下两端留 `spacing.xl` 边距（center 时无留白）。
+`LhPosition` 决定在可用区域内的定位；上下两端留 `spacing.xl` 边距（center 时无留白）。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Toast 定位</span></div>
@@ -69,7 +69,7 @@ controller.Show("已保存");
 | `Close` | 计时到期自动隐藏时触发；Hide() 主动隐藏不触发 | `event Action` | — |
 | `Type` | 语义类型；非 default 时在文字前绘制对应语义色圆点 | `LhToastType` | `Default` |
 | `Duration` | 自动隐藏时长（毫秒） | `int` | `2000` |
-| `Position` | 在可用区域内的定位 | `LhToastPosition` | `Center` |
+| `LhPosition` | 在可用区域内的定位 | `LhToastPosition` | `Center` |
 | `Controller` | 宿主调用句柄（可选；Loaded 后注册 Show/Hide） | `LhToastController?` | `null` |
 
 ### 方法

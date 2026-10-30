@@ -82,7 +82,7 @@ var text = new LhText
 | `Level` | 字号级别，映射到 `typography.fontSize.*` | `LhTextLevel` | `Base` |
 | `Weight` | 字重，映射到 `typography.fontWeight.*` | `LhTextWeight` | `Primary` |
 | `Tone` | 文字色调，映射到 `color.text.*` / `color.selected` | `LhTextTone` | `Regular` |
-| `Align` | 水平对齐（映射到 `TextAlignment`） | `LhTextAlign` | `Start` |
+| `LhAlign` | 水平对齐（映射到 `TextAlignment`） | `LhTextAlign` | `Start` |
 
 ### LhTextLevel
 

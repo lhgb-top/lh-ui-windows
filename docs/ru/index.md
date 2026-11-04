@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-windows
   text: Нативное направление · Windows
   tagline: Библиотека компонентов на C# + WinUI 3 (.NET 8 / Windows App SDK) — токен-ориентированная, согласованная с контрактами, под защитой золотых сценариев

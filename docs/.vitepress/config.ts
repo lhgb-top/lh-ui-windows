@@ -331,8 +331,8 @@ export default defineConfig({
   },
 
   head: [
-    // 图标：SVG 主（浏览器现代版）+ ICO fallback（搜索引擎/老浏览器）+ apple-touch-icon
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}logo.svg` }],
+    // 图标：PNG 主（品牌 logo，docs/部署/favicon-src/logo.png 分发）+ ICO fallback（搜索引擎/老浏览器）+ apple-touch-icon
+    ['link', { rel: 'icon', type: 'image/png', sizes: '512x512', href: `${base}logo.png` }],
     ['link', { rel: 'icon', sizes: '32x32', href: `${base}favicon.ico` }],
     ['link', { rel: 'apple-touch-icon', href: `${base}apple-touch-icon.png` }],
     // 社交分享图（docs/部署/favicon-src/og.png 同源栅格化）
@@ -382,6 +382,7 @@ export default defineConfig({
   themeConfig: {
     search: { provider: 'local' },
     siteTitle: 'lh-ui-windows',
+    logo: { light: '/logo.png', dark: '/logo-dark.png', alt: 'lh-ui' },
   },
 
   locales: buildLocales(),

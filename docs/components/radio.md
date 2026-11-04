@@ -7,7 +7,7 @@
 
 ## 基础用法
 
-宿主监听 `Change` 后把同组其它项的 `Checked` 置为 false，即实现单选组。
+宿主监听 `LhOnChange` 后把同组其它项的 `Checked` 置为 false，即实现单选组。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Radio 基础</span></div>
@@ -35,7 +35,7 @@ var radio = new LhRadio
     Value = "qinghua",
     Checked = true,
 };
-radio.Change += isChecked => { /* 仅未选中且未禁用时触发；宿主维护单选组 */ };
+radio.LhOnChange += isChecked => { /* 仅未选中且未禁用时触发；宿主维护单选组 */ };
 ```
 
 ## 尺寸
@@ -70,7 +70,7 @@ radio.Change += isChecked => { /* 仅未选中且未禁用时触发；宿主维�
 ## 状态
 
 `Disabled` 时不响应点击，外环取 `color.disabled.border`、圆点取 `color.disabled.text`；
-已选中态再次点击不触发 `Change`。
+已选中态再次点击不触发 `LhOnChange`。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Radio 状态</span></div>
@@ -97,7 +97,7 @@ radio.Change += isChecked => { /* 仅未选中且未禁用时触发；宿主维�
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `Change` | 选中态变化回调；仅未选中且未禁用时触发（payload 恒为 true） | `event Action<bool>` | — |
+| `LhOnChange` | 选中态变化回调；仅未选中且未禁用时触发（payload 恒为 true） | `event Action<bool>` | — |
 | `Checked` | 是否选中 | `bool` | `false` |
 | `Disabled` | 是否禁用（不响应点击且呈现禁用样式） | `bool` | `false` |
 | `Label` | 文字标签（绘制在圆环右侧） | `string` | `""` |

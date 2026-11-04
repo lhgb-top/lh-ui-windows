@@ -7,7 +7,7 @@
 
 ## 基础用法
 
-受控组件：宿主监听 `ValueChange` 并把新值回写 `Value`。
+受控组件：宿主监听 `LhOnValueChange` 并把新值回写 `Value`。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Input 基础</span></div>
@@ -31,7 +31,7 @@ var input = new LhInput
 {
     Placeholder = "请输入关键字",
 };
-input.ValueChange += value => { /* 受控：回写 Value */ };
+input.LhOnValueChange += value => { /* 受控：回写 Value */ };
 ```
 
 ## 尺寸
@@ -56,7 +56,7 @@ input.ValueChange += value => { /* 受控：回写 Value */ };
 
 ## 类型与状态
 
-`Password` 以圆点掩码显示；`Disabled` 与 `Readonly` 都不触发 `ValueChange`，
+`Password` 以圆点掩码显示；`Disabled` 与 `Readonly` 都不触发 `LhOnValueChange`，
 但只有 `Disabled` 呈现禁用样式；聚焦时描边取 `color.focus` + `input.focusRingWidth`。
 
 <div class="sim-phone">
@@ -77,7 +77,7 @@ input.ValueChange += value => { /* 受控：回写 Value */ };
 
 ## 清除与字数
 
-`Clearable` 为 true 且值非空时显示清除按钮，点击触发 `ValueChange("")`；
+`Clearable` 为 true 且值非空时显示清除按钮，点击触发 `LhOnValueChange("")`；
 `Maxlength` 超出时截断新输入。
 
 <div class="sim-phone">
@@ -99,7 +99,7 @@ input.ValueChange += value => { /* 受控：回写 Value */ };
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `ValueChange` | 值变化回调（受控）；disabled / readonly 时不触发 | `event Action<string>` | — |
+| `LhOnValueChange` | 值变化回调（受控）；disabled / readonly 时不触发 | `event Action<string>` | — |
 | `LhOnFocus` | 获得焦点时触发 | `event Action` | — |
 | `LhOnBlur` | 失去焦点时触发 | `event Action` | — |
 | `Value` | 当前文本值（受控） | `string` | `""` |

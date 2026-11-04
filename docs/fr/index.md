@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-windows
   text: Lignée native · volet Windows
   tagline: Bibliothèque de composants C# + WinUI 3 (.NET 8 / Windows App SDK), pilotée par les jetons, alignée sur les contrats et gardée par les cas dorés

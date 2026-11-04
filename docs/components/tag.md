@@ -58,7 +58,7 @@ var tag = new LhTag
 ## 尺寸与关闭
 
 三档尺寸映射到 `tag.height` / `paddingHorizontal` / `fontSize` 令牌；`Closable`
-为 true 时在右侧绘制关闭符，点击触发 `Close` 事件。
+为 true 时在右侧绘制关闭符，点击触发 `LhOnClose` 事件。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>尺寸与关闭</span></div>
@@ -82,7 +82,7 @@ var tag = new LhTag
     Type = LhTagType.Primary,
     Closable = true,
 };
-tag.Close += () => { /* 点击关闭符 */ };
+tag.LhOnClose += () => { /* 点击关闭符 */ };
 ```
 
 ## 明暗主题
@@ -106,7 +106,7 @@ tag.Close += () => { /* 点击关闭符 */ };
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `Close` | 点击关闭符时触发（需 `Closable` 为 true） | `event Action` | — |
+| `LhOnClose` | 点击关闭符时触发（需 `Closable` 为 true） | `event Action` | — |
 | `Text` | 标签文字内容（spec 的 default 插槽） | `string` | `""` |
 | `Type` | 语义类型，决定底色、文字色与描边色 | `LhTagType` | `Default` |
 | `LhSize` | 标签尺寸，映射到尺寸令牌 | `LhTagSize` | `Medium` |

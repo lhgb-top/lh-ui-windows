@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-windows
   text: 原生血脈 · Windows 端
   tagline: C# + WinUI 3 元件庫（.NET 8 / Windows App SDK），令牌驅動、契約對齊、黃金用例守護

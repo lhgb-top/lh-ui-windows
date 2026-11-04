@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-windows
   text: Linaje nativo · extremo Windows
   tagline: Biblioteca de componentes en C# + WinUI 3 (.NET 8 / Windows App SDK), controlada por tokens, alineada con los contratos y protegida por casos dorados

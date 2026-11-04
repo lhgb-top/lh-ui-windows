@@ -7,7 +7,7 @@
 
 ## 基础用法
 
-受控组件：宿主监听 `ValueChange` 并把新值回写 `Value`。
+受控组件：宿主监听 `LhOnValueChange` 并把新值回写 `Value`。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Textarea 基础</span></div>
@@ -32,7 +32,7 @@ var textarea = new LhTextarea
     Rows = 3,
     Placeholder = "请输入描述",
 };
-textarea.ValueChange += value => { /* 受控：回写 Value */ };
+textarea.LhOnValueChange += value => { /* 受控：回写 Value */ };
 ```
 
 ## 字数统计
@@ -61,7 +61,7 @@ textarea.ValueChange += value => { /* 受控：回写 Value */ };
 
 ## 状态
 
-`Disabled` 与 `Readonly` 都不触发 `ValueChange`，但只有 `Disabled` 呈现禁用样式；
+`Disabled` 与 `Readonly` 都不触发 `LhOnValueChange`，但只有 `Disabled` 呈现禁用样式；
 聚焦时描边取 `color.focus` + `textarea.focusRingWidth`。
 
 <div class="sim-phone">
@@ -87,7 +87,7 @@ textarea.ValueChange += value => { /* 受控：回写 Value */ };
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `ValueChange` | 值变化回调（受控）；disabled / readonly 时不触发 | `event Action<string>` | — |
+| `LhOnValueChange` | 值变化回调（受控）；disabled / readonly 时不触发 | `event Action<string>` | — |
 | `LhOnFocus` | 获得焦点时触发 | `event Action` | — |
 | `LhOnBlur` | 失去焦点时触发 | `event Action` | — |
 | `Value` | 当前文本值（受控） | `string` | `""` |

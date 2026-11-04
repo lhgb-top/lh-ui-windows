@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-windows
   text: 네이티브 혈통 · Windows 엔드
   tagline: C# + WinUI 3 컴포넌트 라이브러리(.NET 8 / Windows App SDK), 토큰 구동, 계약 정렬, 골든 케이스로 보호

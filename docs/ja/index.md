@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-windows
   text: ネイティブ血脈 · Windows 端
   tagline: C# + WinUI 3 コンポーネントライブラリ（.NET 8 / Windows App SDK）、トークン駆動・契約アラインメント・ゴールデンケースによる保護

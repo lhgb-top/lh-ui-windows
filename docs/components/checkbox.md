@@ -38,7 +38,7 @@ var checkbox = new LhCheckbox
     Label = "青花瓷",
     Checked = true,
 };
-checkbox.Change += isChecked => { };
+checkbox.LhOnChange += isChecked => { };
 ```
 
 ## 尺寸
@@ -100,7 +100,7 @@ checkbox.Change += isChecked => { };
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `Change` | 选中态变化回调；disabled 时不触发 | `event Action<bool>` | — |
+| `LhOnChange` | 选中态变化回调；disabled 时不触发 | `event Action<bool>` | — |
 | `Checked` | 是否选中 | `bool` | `false` |
 | `Indeterminate` | 是否为不确定态（横杠指示）；点击后变为选中 | `bool` | `false` |
 | `Disabled` | 是否禁用（不响应点击且呈现禁用样式） | `bool` | `false` |

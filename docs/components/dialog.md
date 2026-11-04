@@ -7,7 +7,7 @@
 
 ## 基础用法
 
-声明式可见性：`Visible` 为 false 时不渲染任何内容；确认/取消后触发 `Close`，
+声明式可见性：`Visible` 为 false 时不渲染任何内容；确认/取消后触发 `LhOnClose`，
 宿主据此置 `Visible` 为 false。
 
 <div class="sim-phone">
@@ -35,8 +35,8 @@ var dialog = new LhDialog
     ConfirmText = "确认",
     CancelText = "取消",
 };
-dialog.Confirm += () => { /* 执行删除 */ };
-dialog.Close += () => dialog.Visible = false;
+dialog.LhOnConfirm += () => { /* 执行删除 */ };
+dialog.LhOnClose += () => dialog.Visible = false;
 
 dialog.Visible = true;
 ```
@@ -67,16 +67,16 @@ dialog.Visible = true;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `Confirm` | 确认时触发 | `event Action` | — |
-| `Cancel` | 取消时触发 | `event Action` | — |
-| `Close` | 确认/取消后或（closable 时）点击遮罩触发，宿主据此置 Visible 为 false | `event Action` | — |
+| `LhOnConfirm` | 确认时触发 | `event Action` | — |
+| `LhOnCancel` | 取消时触发 | `event Action` | — |
+| `LhOnClose` | 确认/取消后或（closable 时）点击遮罩触发，宿主据此置 Visible 为 false | `event Action` | — |
 | `Visible` | 是否显示；为 false 时不渲染任何内容 | `bool` | `false` |
 | `Title` | 标题 | `string` | `""` |
 | `Content` | 正文内容 | `string` | `""` |
 | `Type` | 语义类型，决定确认按钮的类型（颜色） | `LhDialogType` | `Default` |
 | `ConfirmText` | 确认按钮文字；为空时不显示确认按钮 | `string` | `"确认"` |
 | `CancelText` | 取消按钮文字；为空时不显示取消按钮 | `string` | `"取消"` |
-| `Closable` | 点击遮罩区域是否触发 Close | `bool` | `false` |
+| `Closable` | 点击遮罩区域是否触发 LhOnClose | `bool` | `false` |
 
 ### LhDialogType
 

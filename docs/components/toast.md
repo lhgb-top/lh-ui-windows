@@ -8,8 +8,8 @@
 ## 基础用法
 
 指令式接口（spec 的 show / hide / tick）在端侧落点为方法 + 内部计时：
-`Show(text)` 使其可见并重置计时，`Hide()` 立即隐藏但不触发 `Close`。
-计时由 `DispatcherTimer` 承载，到期自动隐藏并触发 `Close`。
+`Show(text)` 使其可见并重置计时，`Hide()` 立即隐藏但不触发 `LhOnClose`。
+计时由 `DispatcherTimer` 承载，到期自动隐藏并触发 `LhOnClose`。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Toast 基础</span></div>
@@ -27,7 +27,7 @@ var toast = new LhToast
     LhPosition = LhToastPosition.Center,
     Controller = controller,
 };
-toast.Close += () => { /* 计时到期自动隐藏后触发 */ };
+toast.LhOnClose += () => { /* 计时到期自动隐藏后触发 */ };
 
 // 宿主须把 toast 挂在页面 Grid 的最后子节点（层级 zIndex.toast）
 controller.Show("已保存");
@@ -66,7 +66,7 @@ controller.Show("已保存");
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `Close` | 计时到期自动隐藏时触发；Hide() 主动隐藏不触发 | `event Action` | — |
+| `LhOnClose` | 计时到期自动隐藏时触发；Hide() 主动隐藏不触发 | `event Action` | — |
 | `Type` | 语义类型；非 default 时在文字前绘制对应语义色圆点 | `LhToastType` | `Default` |
 | `Duration` | 自动隐藏时长（毫秒） | `int` | `2000` |
 | `LhPosition` | 在可用区域内的定位 | `LhToastPosition` | `Center` |
@@ -77,7 +77,7 @@ controller.Show("已保存");
 | 方法 | 说明 |
 | --- | --- |
 | `Show(string text)` | 显示提示文字并重置自动隐藏计时 |
-| `Hide()` | 立即隐藏但不触发 Close |
+| `Hide()` | 立即隐藏但不触发 LhOnClose |
 
 ### LhToastType
 

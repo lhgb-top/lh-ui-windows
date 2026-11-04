@@ -29,8 +29,8 @@ var navbar = new LhNavbar
     LeftIcon = "back",
     RightText = "更多",
 };
-navbar.LeftClick += () => { };
-navbar.RightClick += () => { };
+navbar.LhOnLeftClick += () => { };
+navbar.LhOnRightClick += () => { };
 ```
 
 ## 图标
@@ -76,8 +76,8 @@ navbar.RightClick += () => { };
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `LeftClick` | 点击左侧区域时触发（无左侧内容时不触发） | `event Action` | — |
-| `RightClick` | 点击右侧区域时触发（无右侧内容时不触发） | `event Action` | — |
+| `LhOnLeftClick` | 点击左侧区域时触发（无左侧内容时不触发） | `event Action` | — |
+| `LhOnRightClick` | 点击右侧区域时触发（无右侧内容时不触发） | `event Action` | — |
 | `Title` | 中间标题 | `string` | `""` |
 | `LeftText` | 左侧按钮文字；与 LeftIcon 二者非空时都显示 | `string` | `""` |
 | `LeftIcon` | 左侧图标名（本地图标体系渲染） | `string?` | `null` |

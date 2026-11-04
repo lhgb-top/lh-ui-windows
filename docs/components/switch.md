@@ -20,7 +20,7 @@
 
 ```csharp
 var sw = new LhSwitch { Checked = true };
-sw.Change += isChecked => { };
+sw.LhOnChange += isChecked => { };
 ```
 
 ## 尺寸
@@ -60,7 +60,7 @@ sw.Change += isChecked => { };
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `Change` | 开关态变化回调；disabled 或 loading 时不触发 | `event Action<bool>` | — |
+| `LhOnChange` | 开关态变化回调；disabled 或 loading 时不触发 | `event Action<bool>` | — |
 | `Checked` | 是否开启 | `bool` | `false` |
 | `Disabled` | 是否禁用（不响应点击且呈现禁用样式） | `bool` | `false` |
 | `Loading` | 是否加载中（滑块位置显示加载环且不响应点击） | `bool` | `false` |

@@ -17,7 +17,7 @@ namespace Top.Lhgb.Ui.Components.Dialog;
 /// 的 8 条黄金用例（已翻译为 xUnit 测试，见 tests/LhDialogTests.cs）。
 ///
 /// 声明式可见性：<see cref="Visible"/> 为 false 时不渲染任何内容；确认/取消后触发
-/// <see cref="Close"/>，宿主据此置 Visible 为 false。也可通过 <see cref="LhDialogController"/>
+/// <see cref="LhOnClose"/>，宿主据此置 Visible 为 false。也可通过 <see cref="LhDialogController"/>
 /// 命令式调用（与 toast 同构的句柄模式）。
 /// </summary>
 public sealed class LhDialog : UserControl
@@ -30,13 +30,13 @@ public sealed class LhDialog : UserControl
     private readonly LhButton _confirmButton;
 
     /// <summary>确认时触发</summary>
-    public event Action? Confirm;
+    public event Action? LhOnConfirm;
 
     /// <summary>取消时触发</summary>
-    public event Action? Cancel;
+    public event Action? LhOnCancel;
 
     /// <summary>确认/取消后或（closable 时）点击遮罩触发，宿主据此置 Visible 为 false</summary>
-    public event Action? Close;
+    public event Action? LhOnClose;
 
     public static readonly DependencyProperty VisibleProperty = DependencyProperty.Register(
         nameof(Visible), typeof(bool), typeof(LhDialog),
@@ -139,7 +139,7 @@ public sealed class LhDialog : UserControl
     {
         var a = ResolveAppearance();
 
-        // 遮罩：closable 为 true 时点击触发 Close，否则吞掉遮罩点击
+        // 遮罩：closable 为 true 时点击触发 LhOnClose，否则吞掉遮罩点击
         _overlay.Fill = new SolidColorBrush(a.OverlayColor);
 
         // 内容卡：宽度/圆角/内边距/底色/投影
@@ -187,15 +187,15 @@ public sealed class LhDialog : UserControl
     private void OnConfirmClick()
     {
         // 确认触发 onConfirm，同时触发 onClose（宿主据此隐藏）
-        Confirm?.Invoke();
-        Close?.Invoke();
+        LhOnConfirm?.Invoke();
+        LhOnClose?.Invoke();
     }
 
     private void OnCancelClick()
     {
         // 取消触发 onCancel，同时触发 onClose
-        Cancel?.Invoke();
-        Close?.Invoke();
+        LhOnCancel?.Invoke();
+        LhOnClose?.Invoke();
     }
 
     private void OnOverlayTapped(object sender, TappedRoutedEventArgs e)
@@ -203,7 +203,7 @@ public sealed class LhDialog : UserControl
         // closable 为 true 时点击遮罩触发 onClose；否则吞掉遮罩点击
         if (Closable)
         {
-            Close?.Invoke();
+            LhOnClose?.Invoke();
         }
         e.Handled = true;
     }

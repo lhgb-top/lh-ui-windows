@@ -31,8 +31,8 @@ internal sealed class ToastDoc
                 new[]
                 {
                     "指令式接口（spec 的 show / hide / tick）在端侧落点为方法 + 内部计时：",
-                    "`Show(text)` 使其可见并重置计时，`Hide()` 立即隐藏但不触发 `Close`。",
-                    "计时由 `DispatcherTimer` 承载，到期自动隐藏并触发 `Close`。"
+                    "`Show(text)` 使其可见并重置计时，`Hide()` 立即隐藏但不触发 `LhOnClose`。",
+                    "计时由 `DispatcherTimer` 承载，到期自动隐藏并触发 `LhOnClose`。"
                 },
                 ToastPreviews.Basic,
                 new[]
@@ -44,7 +44,7 @@ internal sealed class ToastDoc
                     "    LhPosition = LhToastPosition.Center,",
                     "    Controller = controller,",
                     "};",
-                    "toast.Close += () => { /* 计时到期自动隐藏后触发 */ };",
+                    "toast.LhOnClose += () => { /* 计时到期自动隐藏后触发 */ };",
                     "",
                     "// 宿主须把 toast 挂在页面 Grid 的最后子节点（层级 zIndex.toast）",
                     "controller.Show(\"已保存\");"
@@ -77,7 +77,7 @@ internal sealed class ToastDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`Close`", "计时到期自动隐藏时触发；Hide() 主动隐藏不触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnClose`", "计时到期自动隐藏时触发；Hide() 主动隐藏不触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Type`", "语义类型；非 default 时在文字前绘制对应语义色圆点", "`LhToastType`", "`Default`" }),
                         new DocRow(new[] { "`Duration`", "自动隐藏时长（毫秒）", "`int`", "`2000`" }),
                         new DocRow(new[] { "`LhPosition`", "在可用区域内的定位", "`LhToastPosition`", "`Center`" }),
@@ -86,7 +86,7 @@ internal sealed class ToastDoc
                     new DocTable("方法", new[] { "方法", "说明" }, new[]
                     {
                         new DocRow(new[] { "`Show(string text)`", "显示提示文字并重置自动隐藏计时" }),
-                        new DocRow(new[] { "`Hide()`", "立即隐藏但不触发 Close" }),
+                        new DocRow(new[] { "`Hide()`", "立即隐藏但不触发 LhOnClose" }),
                     }),
                     new DocTable("LhToastType", new[] { "值", "圆点色" }, new[]
                     {

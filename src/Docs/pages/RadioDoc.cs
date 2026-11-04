@@ -30,7 +30,7 @@ internal sealed class RadioDoc
                 "基础用法",
                 new[]
                 {
-                    "宿主监听 `Change` 后把同组其它项的 `Checked` 置为 false，即实现单选组。"
+                    "宿主监听 `LhOnChange` 后把同组其它项的 `Checked` 置为 false，即实现单选组。"
                 },
                 RadioPreviews.Basic,
                 new[]
@@ -41,7 +41,7 @@ internal sealed class RadioDoc
                     "    Value = \"qinghua\",",
                     "    Checked = true,",
                     "};",
-                    "radio.Change += isChecked => { /* 仅未选中且未禁用时触发；宿主维护单选组 */ };"
+                    "radio.LhOnChange += isChecked => { /* 仅未选中且未禁用时触发；宿主维护单选组 */ };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -58,7 +58,7 @@ internal sealed class RadioDoc
                 new[]
                 {
                     "`Disabled` 时不响应点击，外环取 `color.disabled.border`、圆点取 `color.disabled.text`；",
-                    "已选中态再次点击不触发 `Change`。"
+                    "已选中态再次点击不触发 `LhOnChange`。"
                 },
                 RadioPreviews.States,
                 Array.Empty<string>(),
@@ -72,7 +72,7 @@ internal sealed class RadioDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`Change`", "选中态变化回调；仅未选中且未禁用时触发（payload 恒为 true）", "`event Action<bool>`", "—" }),
+                        new DocRow(new[] { "`LhOnChange`", "选中态变化回调；仅未选中且未禁用时触发（payload 恒为 true）", "`event Action<bool>`", "—" }),
                         new DocRow(new[] { "`Checked`", "是否选中", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Disabled`", "是否禁用（不响应点击且呈现禁用样式）", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Label`", "文字标签（绘制在圆环右侧）", "`string`", "`\"\"`" }),

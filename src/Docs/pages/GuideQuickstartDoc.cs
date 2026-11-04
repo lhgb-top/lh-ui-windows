@@ -119,23 +119,23 @@ internal sealed class GuideQuickstartDoc
                 null,
                 new[]
                 {
-                    "// 受控输入：宿主监听 ValueChange 并回写 Value",
+                    "// 受控输入：宿主监听 LhOnValueChange 并回写 Value",
                     "var input = new LhInput { Placeholder = \"请输入关键字\" };",
-                    "input.ValueChange += value => input.Value = value;",
+                    "input.LhOnValueChange += value => input.Value = value;",
                     "",
                     "// 复选框",
                     "var checkbox = new LhCheckbox { Label = \"青花瓷\" };",
-                    "checkbox.Change += isChecked => { };",
+                    "checkbox.LhOnChange += isChecked => { };",
                     "",
                     "// 开关",
                     "var sw = new LhSwitch { Checked = true };",
-                    "sw.Change += isChecked => { };",
+                    "sw.LhOnChange += isChecked => { };",
                     "",
                     "// 指令式轻提示：先放宿主控件，再用控制器驱动",
                     "var toast = new LhToast();",
-                    "toast.Close += () => { };",
+                    "toast.LhOnClose += () => { };",
                     "var panel = new StackPanel { Children = { toast } };",
-                    "toast.Show(\"已保存\");   // 到期自动隐藏并触发 Close"
+                    "toast.Show(\"已保存\");   // 到期自动隐藏并触发 LhOnClose"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(

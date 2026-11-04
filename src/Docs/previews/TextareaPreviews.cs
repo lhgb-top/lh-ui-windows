@@ -14,7 +14,7 @@ internal static class TextareaPreviews
     public static UIElement Basic(DocPreviewScope scope)
     {
         var textarea = new LhTextarea { Placeholder = "请输入多行内容" };
-        textarea.ValueChange += value => scope.ShowToast($"ValueChange：{value}");
+        textarea.LhOnValueChange += value => scope.ShowToast($"LhOnValueChange：{value}");
         textarea.LhOnBlur += () => scope.ShowToast("Blur 失焦事件");
 
         return PreviewLayout.Column(

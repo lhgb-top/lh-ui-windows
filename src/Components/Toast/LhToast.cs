@@ -44,7 +44,7 @@ public sealed class LhToast : UserControl
     private readonly DispatcherTimer _timer;
 
     /// <summary>计时到期自动隐藏时触发；Hide() 主动隐藏不触发</summary>
-    public event Action? Close;
+    public event Action? LhOnClose;
 
     /// <summary>语义类型；非 default 时在文字前绘制对应语义色圆点</summary>
     public static readonly DependencyProperty TypeProperty = DependencyProperty.Register(
@@ -187,7 +187,7 @@ public sealed class LhToast : UserControl
         _timer.Start();
     }
 
-    /// <summary>Hide()：立即隐藏但不触发 Close（黄金用例 hide-is-silent）</summary>
+    /// <summary>Hide()：立即隐藏但不触发 LhOnClose（黄金用例 hide-is-silent）</summary>
     public void Hide()
     {
         _timer.Stop();
@@ -197,11 +197,11 @@ public sealed class LhToast : UserControl
 
     private void OnTimerTick(object? sender, object e)
     {
-        // 计时到期：自动隐藏并触发 Close（黄金用例 auto-hides-after-duration）
+        // 计时到期：自动隐藏并触发 LhOnClose（黄金用例 auto-hides-after-duration）
         _timer.Stop();
         _visible = false;
         UpdateVisibility();
-        Close?.Invoke();
+        LhOnClose?.Invoke();
     }
 
     private void OnThemeChanged(object? sender, EventArgs e) => ApplyAppearance();

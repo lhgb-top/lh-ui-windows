@@ -10,7 +10,7 @@ namespace Top.Lhgb.Ui.Docs.Previews;
 /// Picker 真交互预览。方法名与 <c>docs/components/picker.md</c> 的 section 标题经 SCENE_MAP 对应。
 ///
 /// Picker 是指令式浮层：预览把一个 LhPicker 实例挂进树的末层（跨预览区铺满），
-/// 按钮只负责翻转 <see cref="LhPicker.Visible"/>；Close 事件里由宿主收回。
+/// 按钮只负责翻转 <see cref="LhPicker.Visible"/>；LhOnClose 事件里由宿主收回。
 /// </summary>
 internal static class PickerPreviews
 {
@@ -29,9 +29,9 @@ internal static class PickerPreviews
             CancelText = "取消",
             Options = Provinces,
         };
-        picker.Confirm += index => scope.ShowToast($"Confirm：{Provinces[index]}（索引 {index}）");
-        picker.Cancel += () => scope.ShowToast("Cancel：取消了选择");
-        picker.Close += () => picker.Visible = false;
+        picker.LhOnConfirm += index => scope.ShowToast($"LhOnConfirm：{Provinces[index]}（索引 {index}）");
+        picker.LhOnCancel += () => scope.ShowToast("LhOnCancel：取消了选择");
+        picker.LhOnClose += () => picker.Visible = false;
 
         var open = new LhButton { Type = LhButtonType.Primary, Text = "打开 Picker" };
         open.LhOnClick += () => picker.Visible = true;
@@ -49,8 +49,8 @@ internal static class PickerPreviews
             // 黄金用例 value-clamp：Value 超出 options 长度时解析回 0，不越界崩溃
             Value = 99,
         };
-        picker.Confirm += index => scope.ShowToast($"Confirm：钳制到索引 {index}（{Provinces[index]}）");
-        picker.Close += () => picker.Visible = false;
+        picker.LhOnConfirm += index => scope.ShowToast($"LhOnConfirm：钳制到索引 {index}（{Provinces[index]}）");
+        picker.LhOnClose += () => picker.Visible = false;
 
         var open = new LhButton { Type = LhButtonType.Primary, Text = "Value = 99 打开 Picker" };
         open.LhOnClick += () => picker.Visible = true;

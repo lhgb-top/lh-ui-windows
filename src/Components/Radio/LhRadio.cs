@@ -15,7 +15,7 @@ namespace Top.Lhgb.Ui.Components.Radio;
 /// 属性与 <c>lh-ui-core/specs/radio.json</c> 逐字对齐；行为遵循 <c>cases/radio.json</c>
 /// 的 6 条黄金用例（已翻译为 xUnit 测试，见 tests/LhRadioTests.cs）。
 ///
-/// 组件本身不含组逻辑：宿主维护单选组，监听 <see cref="Change"/> 后把同组其它项置为未选中。
+/// 组件本身不含组逻辑：宿主维护单选组，监听 <see cref="LhOnChange"/> 后把同组其它项置为未选中。
 /// </summary>
 public sealed class LhRadio : UserControl
 {
@@ -24,7 +24,7 @@ public sealed class LhRadio : UserControl
     private readonly TextBlock _label;
 
     /// <summary>选中态变化回调；仅未选中且未禁用时触发（payload 恒为 true）</summary>
-    public event Action<bool>? Change;
+    public event Action<bool>? LhOnChange;
 
     public static readonly DependencyProperty CheckedProperty = DependencyProperty.Register(
         nameof(Checked), typeof(bool), typeof(LhRadio),
@@ -120,7 +120,7 @@ public sealed class LhRadio : UserControl
             return;
         }
         Checked = true;
-        Change?.Invoke(true);
+        LhOnChange?.Invoke(true);
     }
 
     private void OnThemeChanged(object? sender, EventArgs e) => ApplyAppearance();

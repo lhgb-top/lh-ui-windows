@@ -21,7 +21,7 @@ public sealed class LhCheckbox : UserControl
     private readonly TextBlock _label;
 
     /// <summary>选中态变化回调；disabled 时不触发</summary>
-    public event Action<bool>? Change;
+    public event Action<bool>? LhOnChange;
 
     public static readonly DependencyProperty CheckedProperty = DependencyProperty.Register(
         nameof(Checked), typeof(bool), typeof(LhCheckbox),
@@ -126,7 +126,7 @@ public sealed class LhCheckbox : UserControl
             Indeterminate = false;
         }
         Checked = next;
-        Change?.Invoke(next);
+        LhOnChange?.Invoke(next);
     }
 
     private void OnThemeChanged(object? sender, EventArgs e) => ApplyAppearance();

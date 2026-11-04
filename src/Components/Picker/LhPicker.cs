@@ -16,9 +16,9 @@ namespace Top.Lhgb.Ui.Components.Picker;
 /// 的 8 条黄金用例（已翻译为 xUnit 测试，见 tests/LhPickerTests.cs）。
 ///
 /// 单列滚轮由 ScrollViewer + 等高条目承担（P0 只做单列，多列留待后续）：
-/// 滚动停止时按偏移量吸附到最近条目并触发 <see cref="ValueChange"/>。
+/// 滚动停止时按偏移量吸附到最近条目并触发 <see cref="LhOnValueChange"/>。
 /// 声明式可见性：<see cref="Visible"/> 为 false 时不渲染任何内容；确认/取消后触发
-/// <see cref="Close"/>，宿主据此置 Visible 为 false。组件须作为页面 Grid 的最后子节点挂载。
+/// <see cref="LhOnClose"/>，宿主据此置 Visible 为 false。组件须作为页面 Grid 的最后子节点挂载。
 /// </summary>
 public sealed class LhPicker : UserControl
 {
@@ -33,16 +33,16 @@ public sealed class LhPicker : UserControl
     private readonly Rectangle _indicatorBottom;
 
     /// <summary>滚轮停止且选中项变化时触发</summary>
-    public event Action<int>? ValueChange;
+    public event Action<int>? LhOnValueChange;
 
     /// <summary>点击确认按钮时触发，携带当前选中索引</summary>
-    public event Action<int>? Confirm;
+    public event Action<int>? LhOnConfirm;
 
     /// <summary>点击取消按钮时触发</summary>
-    public event Action? Cancel;
+    public event Action? LhOnCancel;
 
     /// <summary>确认/取消后触发，宿主据此置 Visible 为 false</summary>
-    public event Action? Close;
+    public event Action? LhOnClose;
 
     public static readonly DependencyProperty VisibleProperty = DependencyProperty.Register(
         nameof(Visible), typeof(bool), typeof(LhPicker),
@@ -227,7 +227,7 @@ public sealed class LhPicker : UserControl
         _wheel.ChangeView(null, LhEpx.Px(_selectedIndex * a.ItemHeight), null, true);
     }
 
-    /// <summary>滚动停止时吸附到最近条目并触发 ValueChange</summary>
+    /// <summary>滚动停止时吸附到最近条目并触发 LhOnValueChange</summary>
     private void OnWheelViewChanged(object? sender, ScrollViewerViewChangedEventArgs e)
     {
         if (e.IsIntermediate)
@@ -242,7 +242,7 @@ public sealed class LhPicker : UserControl
         {
             _selectedIndex = index;
             // 滚轮停止后，选中项变化时触发 onValueChange
-            ValueChange?.Invoke(index);
+            LhOnValueChange?.Invoke(index);
         }
         // 吸附到条目边界
         _wheel.ChangeView(null, LhEpx.Px(index * LhTokens.Picker.ItemHeight), null, true);
@@ -252,15 +252,15 @@ public sealed class LhPicker : UserControl
     {
         e.Handled = true;
         // 确认携带当前选中索引，同时触发 onClose（宿主据此隐藏）
-        Confirm?.Invoke(_selectedIndex);
-        Close?.Invoke();
+        LhOnConfirm?.Invoke(_selectedIndex);
+        LhOnClose?.Invoke();
     }
 
     private void OnCancelTapped(object sender, TappedRoutedEventArgs e)
     {
         e.Handled = true;
-        Cancel?.Invoke();
-        Close?.Invoke();
+        LhOnCancel?.Invoke();
+        LhOnClose?.Invoke();
     }
 
     /// <summary>遮罩点击不关闭（确认/取消是唯一关闭路径），吞掉事件</summary>

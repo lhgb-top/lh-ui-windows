@@ -190,7 +190,7 @@ public static class DemoSections
         FrameworkElement Closable(LhTag tag)
         {
             tag.Closable = true;
-            tag.Close += () => ctx.ShowToast($"关闭了「{tag.Text}」", LhToastType.Info);
+            tag.LhOnClose += () => ctx.ShowToast($"关闭了「{tag.Text}」", LhToastType.Info);
             return tag;
         }
 
@@ -277,7 +277,7 @@ public static class DemoSections
     private static FrameworkElement InputSection(DemoContext ctx)
     {
         var basic = new LhInput { Placeholder = "请输入关键字", Clearable = true };
-        basic.ValueChange += value => ctx.ShowToast($"输入：{value}", LhToastType.Default);
+        basic.LhOnValueChange += value => ctx.ShowToast($"输入：{value}", LhToastType.Default);
 
         var password = new LhInput
         {
@@ -290,7 +290,7 @@ public static class DemoSections
 
         return Section(
             "Input 输入框",
-            "受控组件：监听 ValueChange 回写 Value。Password 掩码显示；Clearable 出现清除符；Maxlength 截断。",
+            "受控组件：监听 LhOnValueChange 回写 Value。Password 掩码显示；Clearable 出现清除符；Maxlength 截断。",
             Column(basic, password, limited),
             Column(
                 new LhInput { LhSize = LhInputSize.Small, Placeholder = "小型输入框" },
@@ -312,7 +312,7 @@ public static class DemoSections
             ShowCount = true,
             Maxlength = 10,
         };
-        basic.ValueChange += value => ctx.ShowToast($"已输入 {value.Length} 字", LhToastType.Default);
+        basic.LhOnValueChange += value => ctx.ShowToast($"已输入 {value.Length} 字", LhToastType.Default);
 
         return Section(
             "Textarea 多行输入",
@@ -330,7 +330,7 @@ public static class DemoSections
         FrameworkElement Labeled(LhCheckbox checkbox, string label)
         {
             checkbox.Label = label;
-            checkbox.Change += isChecked => ctx.ShowToast($"{label}：{(isChecked ? "已选中" : "已取消")}", LhToastType.Default);
+            checkbox.LhOnChange += isChecked => ctx.ShowToast($"{label}：{(isChecked ? "已选中" : "已取消")}", LhToastType.Default);
             return checkbox;
         }
 
@@ -358,7 +358,7 @@ public static class DemoSections
 
         foreach (var radio in group)
         {
-            radio.Change += isChecked =>
+            radio.LhOnChange += isChecked =>
             {
                 if (!isChecked) return;
                 foreach (var other in group) other.Checked = ReferenceEquals(other, radio);
@@ -368,7 +368,7 @@ public static class DemoSections
 
         return Section(
             "Radio 单选框",
-            "单选由宿主维护互斥（监听 Change 置兄弟为未选中）；选中圆点直径取 dotScale。",
+            "单选由宿主维护互斥（监听 LhOnChange 置兄弟为未选中）；选中圆点直径取 dotScale。",
             Row(r1, r2, r3),
             Row(
                 new LhRadio { Label = "小型", LhSize = LhRadioSize.Small, Checked = true },
@@ -382,7 +382,7 @@ public static class DemoSections
     {
         FrameworkElement Labeled(LhSwitch sw, string label)
         {
-            sw.Change += isChecked => ctx.ShowToast($"{label}：{(isChecked ? "开" : "关")}", LhToastType.Default);
+            sw.LhOnChange += isChecked => ctx.ShowToast($"{label}：{(isChecked ? "开" : "关")}", LhToastType.Default);
             return sw;
         }
 
@@ -431,7 +431,7 @@ public static class DemoSections
 
         return Section(
             "Dialog 对话框",
-            "确认按钮颜色随 type 变化；点击遮罩（closable）或按钮触发 Close，宿主据此隐藏。",
+            "确认按钮颜色随 type 变化；点击遮罩（closable）或按钮触发 LhOnClose，宿主据此隐藏。",
             Row(
                 Opener(new LhButton { Text = "默认对话框" }, LhDialogType.Default, "提示", "这是一个默认对话框。"),
                 Opener(Primary("主要对话框"), LhDialogType.Primary, "确认操作", "确认要继续吗？")),
@@ -454,7 +454,7 @@ public static class DemoSections
 
         return Section(
             "Toast 轻提示",
-            "Show(text) 显示并重置自动隐藏计时（默认 2000ms），到期触发 Close；非 default 类型带语义色圆点。",
+            "Show(text) 显示并重置自动隐藏计时（默认 2000ms），到期触发 LhOnClose；非 default 类型带语义色圆点。",
             Row(
                 Opener(new LhButton { Text = "默认提示" }, LhToastType.Default, "这是一条提示"),
                 Opener(Primary("成功提示"), LhToastType.Success, "保存成功")),
@@ -492,8 +492,8 @@ public static class DemoSections
             RightText = "编辑",
             Bordered = true,
         };
-        bordered.LeftClick += () => ctx.ShowToast("点击了返回", LhToastType.Info);
-        bordered.RightClick += () => ctx.ShowToast("点击了编辑", LhToastType.Info);
+        bordered.LhOnLeftClick += () => ctx.ShowToast("点击了返回", LhToastType.Info);
+        bordered.LhOnRightClick += () => ctx.ShowToast("点击了编辑", LhToastType.Info);
 
         var borderless = new LhNavbar
         {
@@ -501,7 +501,7 @@ public static class DemoSections
             RightIcon = "more",
             Bordered = false,
         };
-        borderless.RightClick += () => ctx.ShowToast("点击了更多", LhToastType.Info);
+        borderless.LhOnRightClick += () => ctx.ShowToast("点击了更多", LhToastType.Info);
 
         return Section(
             "Navbar 导航栏",

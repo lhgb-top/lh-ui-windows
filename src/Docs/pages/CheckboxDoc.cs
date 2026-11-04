@@ -37,7 +37,7 @@ internal sealed class CheckboxDoc
                     "    Label = \"青花瓷\",",
                     "    Checked = true,",
                     "};",
-                    "checkbox.Change += isChecked => { };"
+                    "checkbox.LhOnChange += isChecked => { };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -68,7 +68,7 @@ internal sealed class CheckboxDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`Change`", "选中态变化回调；disabled 时不触发", "`event Action<bool>`", "—" }),
+                        new DocRow(new[] { "`LhOnChange`", "选中态变化回调；disabled 时不触发", "`event Action<bool>`", "—" }),
                         new DocRow(new[] { "`Checked`", "是否选中", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Indeterminate`", "是否为不确定态（横杠指示）；点击后变为选中", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Disabled`", "是否禁用（不响应点击且呈现禁用样式）", "`bool`", "`false`" }),

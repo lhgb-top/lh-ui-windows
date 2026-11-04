@@ -30,7 +30,7 @@ internal sealed class TextareaDoc
                 "基础用法",
                 new[]
                 {
-                    "受控组件：宿主监听 `ValueChange` 并把新值回写 `Value`。"
+                    "受控组件：宿主监听 `LhOnValueChange` 并把新值回写 `Value`。"
                 },
                 TextareaPreviews.Basic,
                 new[]
@@ -40,7 +40,7 @@ internal sealed class TextareaDoc
                     "    Rows = 3,",
                     "    Placeholder = \"请输入描述\",",
                     "};",
-                    "textarea.ValueChange += value => { /* 受控：回写 Value */ };"
+                    "textarea.LhOnValueChange += value => { /* 受控：回写 Value */ };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -57,7 +57,7 @@ internal sealed class TextareaDoc
                 "状态",
                 new[]
                 {
-                    "`Disabled` 与 `Readonly` 都不触发 `ValueChange`，但只有 `Disabled` 呈现禁用样式；",
+                    "`Disabled` 与 `Readonly` 都不触发 `LhOnValueChange`，但只有 `Disabled` 呈现禁用样式；",
                     "聚焦时描边取 `color.focus` + `textarea.focusRingWidth`。"
                 },
                 TextareaPreviews.States,
@@ -72,7 +72,7 @@ internal sealed class TextareaDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`ValueChange`", "值变化回调（受控）；disabled / readonly 时不触发", "`event Action<string>`", "—" }),
+                        new DocRow(new[] { "`LhOnValueChange`", "值变化回调（受控）；disabled / readonly 时不触发", "`event Action<string>`", "—" }),
                         new DocRow(new[] { "`LhOnFocus`", "获得焦点时触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`LhOnBlur`", "失去焦点时触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Value`", "当前文本值（受控）", "`string`", "`\"\"`" }),

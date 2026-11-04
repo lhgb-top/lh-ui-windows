@@ -19,8 +19,8 @@ internal static class NavbarPreviews
             LeftText = "返回",
             RightText = "更多",
         };
-        navbar.LeftClick += () => scope.ShowToast("LeftClick：返回（宿主里通常做出栈）");
-        navbar.RightClick += () => scope.ShowToast("RightClick：更多");
+        navbar.LhOnLeftClick += () => scope.ShowToast("LhOnLeftClick：返回（宿主里通常做出栈）");
+        navbar.LhOnRightClick += () => scope.ShowToast("LhOnRightClick：更多");
 
         return PreviewLayout.Column(navbar);
     }
@@ -34,8 +34,8 @@ internal static class NavbarPreviews
             LeftIcon = "back",
             RightIcon = "search",
         };
-        navbar.LeftClick += () => scope.ShowToast("LeftIcon 点击");
-        navbar.RightClick += () => scope.ShowToast("RightIcon 点击");
+        navbar.LhOnLeftClick += () => scope.ShowToast("LeftIcon 点击");
+        navbar.LhOnRightClick += () => scope.ShowToast("RightIcon 点击");
 
         return PreviewLayout.Column(navbar);
     }

@@ -10,7 +10,7 @@ namespace Top.Lhgb.Ui.Docs.Previews;
 /// Dialog 真交互预览。方法名与 <c>docs/components/dialog.md</c> 的 section 标题经 SCENE_MAP 对应。
 ///
 /// Dialog 是指令式浮层：预览把一个 LhDialog 实例挂进树的末层（跨预览区铺满），
-/// 按钮只负责翻转 <see cref="LhDialog.Visible"/>；Confirm / Cancel / Close 都由宿主收回。
+/// 按钮只负责翻转 <see cref="LhDialog.Visible"/>；LhOnConfirm / LhOnCancel / LhOnClose 都由宿主收回。
 /// </summary>
 internal static class DialogPreviews
 {
@@ -25,17 +25,17 @@ internal static class DialogPreviews
             CancelText = "取消",
             Closable = true,
         };
-        dialog.Confirm += () =>
+        dialog.LhOnConfirm += () =>
         {
             dialog.Visible = false;
-            scope.ShowToast("Confirm：已确认删除");
+            scope.ShowToast("LhOnConfirm：已确认删除");
         };
-        dialog.Cancel += () =>
+        dialog.LhOnCancel += () =>
         {
             dialog.Visible = false;
-            scope.ShowToast("Cancel：已取消");
+            scope.ShowToast("LhOnCancel：已取消");
         };
-        dialog.Close += () => dialog.Visible = false;
+        dialog.LhOnClose += () => dialog.Visible = false;
 
         var open = new LhButton { Type = LhButtonType.Primary, Text = "打开对话框" };
         open.LhOnClick += () => dialog.Visible = true;
@@ -53,12 +53,12 @@ internal static class DialogPreviews
             ConfirmText = "确认",
             CancelText = "取消",
         };
-        dialog.Confirm += () =>
+        dialog.LhOnConfirm += () =>
         {
             dialog.Visible = false;
-            scope.ShowToast($"Confirm：{dialog.Type} 类型已确认");
+            scope.ShowToast($"LhOnConfirm：{dialog.Type} 类型已确认");
         };
-        dialog.Close += () => dialog.Visible = false;
+        dialog.LhOnClose += () => dialog.Visible = false;
 
         var types = new[] { LhDialogType.Primary, LhDialogType.Success, LhDialogType.Warning, LhDialogType.Danger };
         var labels = new[] { "主要", "成功", "警告", "危险" };

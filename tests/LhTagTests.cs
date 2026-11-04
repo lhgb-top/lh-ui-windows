@@ -10,7 +10,7 @@ namespace Top.Lhgb.Ui.Tests;
 ///
 /// cases.then.tokens（「某令牌是否被应用」）在此断言为「解析后的外观值 == 生成令牌的值」——
 /// 只要 LhTagTokens.Resolve 的返回取自令牌对象，映射即成立。交互事件（closable-tap-emits-onclose）
-/// 走控件级 Close 事件断言。
+/// 走控件级 LhOnClose 事件断言。
 /// </summary>
 public class LhTagTests
 {
@@ -65,7 +65,7 @@ public class LhTagTests
     }
 
     // case: closable-tap-emits-onclose —— 可关闭形态的渲染间距消费 spacing.xs
-    // （关闭符点击由控件内部 Tapped 拦截触发 Close 事件；控件实例化需 UI 线程，
+    // （关闭符点击由控件内部 Tapped 拦截触发 LhOnClose 事件；控件实例化需 UI 线程，
     //   此处断言其令牌绑定，交互路径与 button 的 Tapped gate 同构）
     [Fact]
     public void Closable_Tap_Emits_OnClose()

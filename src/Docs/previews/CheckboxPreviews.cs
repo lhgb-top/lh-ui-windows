@@ -14,10 +14,10 @@ internal static class CheckboxPreviews
     public static UIElement Basic(DocPreviewScope scope)
     {
         var checkbox = new LhCheckbox { Label = "未选中" };
-        checkbox.Change += value =>
+        checkbox.LhOnChange += value =>
         {
             checkbox.Label = value ? "已选中" : "未选中";
-            scope.ShowToast($"Change：{value}");
+            scope.ShowToast($"LhOnChange：{value}");
         };
 
         return PreviewLayout.Column(
@@ -43,7 +43,7 @@ internal static class CheckboxPreviews
             Label = "Indeterminate 半选",
             Indeterminate = true,
         };
-        indeterminate.Change += value => scope.ShowToast($"半选项 Change：{value}");
+        indeterminate.LhOnChange += value => scope.ShowToast($"半选项 LhOnChange：{value}");
 
         return PreviewLayout.Column(
             indeterminate,

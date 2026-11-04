@@ -22,7 +22,7 @@ public sealed class LhSwitch : UserControl
     private readonly ProgressRing _loadingRing;
 
     /// <summary>开关态变化回调；disabled 或 loading 时不触发</summary>
-    public event Action<bool>? Change;
+    public event Action<bool>? LhOnChange;
 
     public static readonly DependencyProperty CheckedProperty = DependencyProperty.Register(
         nameof(Checked), typeof(bool), typeof(LhSwitch),
@@ -115,7 +115,7 @@ public sealed class LhSwitch : UserControl
             return;
         }
         Checked = !Checked;
-        Change?.Invoke(Checked);
+        LhOnChange?.Invoke(Checked);
     }
 
     private void OnThemeChanged(object? sender, EventArgs e) => ApplyAppearance();

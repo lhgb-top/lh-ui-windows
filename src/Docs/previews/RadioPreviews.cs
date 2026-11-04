@@ -9,7 +9,7 @@ namespace Top.Lhgb.Ui.Docs.Previews;
 /// Radio 真交互预览。方法名与 <c>docs/components/radio.md</c> 的 section 标题经 SCENE_MAP 对应。
 ///
 /// 单选语义由宿主维护：本库 Radio 是受控组件，Checked 由外部状态驱动，
-/// 预览里手工模拟「同组互斥」展示 Change 的用法（真组逻辑在业务层）。
+/// 预览里手工模拟「同组互斥」展示 LhOnChange 的用法（真组逻辑在业务层）。
 /// </summary>
 internal static class RadioPreviews
 {
@@ -23,7 +23,7 @@ internal static class RadioPreviews
         LhRadio[] group = { optionA, optionB, optionC };
         foreach (var radio in group)
         {
-            radio.Change += value =>
+            radio.LhOnChange += value =>
             {
                 if (!value) return;
                 foreach (var other in group) other.Checked = other == radio;

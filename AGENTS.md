@@ -74,7 +74,12 @@ P0 全 15 组件已齐备，无 spec / 实现缺口。text 只消费全局排版
    （断言 `Resolve` 纯函数的外观解析 + 状态 gate）。
 6. **命名与 spec 对齐**（R-n5）：属性名严格沿用 `lh-ui-core/specs/<comp>.json` 的驼峰命名
    （`Type` / `Size` / `Disabled` / `Loading` / `Icon` / `BgPattern`），C# 侧 PascalCase，
-   不得自创 `Variant` / `Dimension` 等。spec 的 `onClick` 事件落 `event Action Click`。
+   不得自创 `Variant` / `Dimension` 等。事件一律 `LhOn*` 前缀按 spec 驼峰转 PascalCase：
+   `onClick` → `event Action? LhOnClick`、`onValueChange` → `LhOnValueChange`、
+   `onChange` → `LhOnChange`、`onConfirm/onCancel/onClose` → `LhOnConfirm/LhOnCancel/LhOnClose`、
+   `onLeftClick/onRightClick` → `LhOnLeftClick/LhOnRightClick`（2026-11-03 统一：
+   此前 Dialog/Picker/Tag/Toast/Input/Textarea 等混用无前缀的 `Confirm/Cancel/Close/ValueChange/Change/LeftClick`，
+   因包未正式发包，直接统一，无兼容负担）。
 7. **新增组件必须同时更新三个聚合点**：`src/LhUi.cs`（聚合导出组件 + 枚举 + Tokens 类；
    测试与 demo 都经项目引用 `Top.Lhgb.Ui` 命名空间导入，漏导出符号会直接编译失败）、
    `tests/Lh<Comp>Tests.cs`（黄金用例翻译）、

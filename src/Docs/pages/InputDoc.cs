@@ -30,7 +30,7 @@ internal sealed class InputDoc
                 "基础用法",
                 new[]
                 {
-                    "受控组件：宿主监听 `ValueChange` 并把新值回写 `Value`。"
+                    "受控组件：宿主监听 `LhOnValueChange` 并把新值回写 `Value`。"
                 },
                 InputPreviews.Basic,
                 new[]
@@ -39,7 +39,7 @@ internal sealed class InputDoc
                     "{",
                     "    Placeholder = \"请输入关键字\",",
                     "};",
-                    "input.ValueChange += value => { /* 受控：回写 Value */ };"
+                    "input.LhOnValueChange += value => { /* 受控：回写 Value */ };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -55,7 +55,7 @@ internal sealed class InputDoc
                 "类型与状态",
                 new[]
                 {
-                    "`Password` 以圆点掩码显示；`Disabled` 与 `Readonly` 都不触发 `ValueChange`，",
+                    "`Password` 以圆点掩码显示；`Disabled` 与 `Readonly` 都不触发 `LhOnValueChange`，",
                     "但只有 `Disabled` 呈现禁用样式；聚焦时描边取 `color.focus` + `input.focusRingWidth`。"
                 },
                 InputPreviews.TypesAndStates,
@@ -65,7 +65,7 @@ internal sealed class InputDoc
                 "清除与字数",
                 new[]
                 {
-                    "`Clearable` 为 true 且值非空时显示清除按钮，点击触发 `ValueChange(\"\")`；",
+                    "`Clearable` 为 true 且值非空时显示清除按钮，点击触发 `LhOnValueChange(\"\")`；",
                     "`Maxlength` 超出时截断新输入。"
                 },
                 InputPreviews.ClearAndCount,
@@ -80,7 +80,7 @@ internal sealed class InputDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`ValueChange`", "值变化回调（受控）；disabled / readonly 时不触发", "`event Action<string>`", "—" }),
+                        new DocRow(new[] { "`LhOnValueChange`", "值变化回调（受控）；disabled / readonly 时不触发", "`event Action<string>`", "—" }),
                         new DocRow(new[] { "`LhOnFocus`", "获得焦点时触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`LhOnBlur`", "失去焦点时触发", "`event Action`", "—" }),
                         new DocRow(new[] { "`Value`", "当前文本值（受控）", "`string`", "`\"\"`" }),

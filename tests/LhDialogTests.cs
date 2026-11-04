@@ -11,7 +11,7 @@ namespace Top.Lhgb.Ui.Tests;
 ///
 /// cases.then.tokens（「某令牌是否被应用」）在此断言为「解析后的外观值 == 生成令牌的值」——
 /// 只要 LhDialogTokens.Resolve 的返回取自令牌对象，映射即成立。交互事件（确认/取消/遮罩）
-/// 走控件级 Confirm/Cancel/Close 事件约定（见 LhDialog.cs）。
+/// 走控件级 LhOnConfirm/LhOnCancel/LhOnClose 事件约定（见 LhDialog.cs）。
 /// </summary>
 public class LhDialogTests
 {

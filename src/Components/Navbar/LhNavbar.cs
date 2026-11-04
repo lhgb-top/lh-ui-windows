@@ -31,10 +31,10 @@ public sealed class LhNavbar : UserControl
     private readonly Rectangle _divider;
 
     /// <summary>点击左侧区域时触发</summary>
-    public event Action? LeftClick;
+    public event Action? LhOnLeftClick;
 
     /// <summary>点击右侧区域时触发</summary>
-    public event Action? RightClick;
+    public event Action? LhOnRightClick;
 
     public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
         nameof(Title), typeof(string), typeof(LhNavbar),
@@ -210,7 +210,7 @@ public sealed class LhNavbar : UserControl
         // 左侧无内容时不触发（黄金用例 no-left-content-no-onleftclick）
         if (HasLeftContent())
         {
-            LeftClick?.Invoke();
+            LhOnLeftClick?.Invoke();
         }
     }
 
@@ -219,7 +219,7 @@ public sealed class LhNavbar : UserControl
         e.Handled = true;
         if (HasRightContent())
         {
-            RightClick?.Invoke();
+            LhOnRightClick?.Invoke();
         }
     }
 

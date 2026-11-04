@@ -30,7 +30,7 @@ internal sealed class PickerDoc
                 "基础用法",
                 new[]
                 {
-                    "声明式可见性：`Visible` 为 false 时不渲染任何内容；确认/取消后触发 `Close`，",
+                    "声明式可见性：`Visible` 为 false 时不渲染任何内容；确认/取消后触发 `LhOnClose`，",
                     "宿主据此置 `Visible` 为 false。"
                 },
                 PickerPreviews.Basic,
@@ -42,9 +42,9 @@ internal sealed class PickerDoc
                     "    Value = 1,",
                     "    Title = \"选择\",",
                     "};",
-                    "picker.ValueChange += index => { /* 滚轮停止后的选中索引 */ };",
-                    "picker.Confirm += index => { /* 当前选中索引 */ };",
-                    "picker.Close += () => picker.Visible = false;",
+                    "picker.LhOnValueChange += index => { /* 滚轮停止后的选中索引 */ };",
+                    "picker.LhOnConfirm += index => { /* 当前选中索引 */ };",
+                    "picker.LhOnClose += () => picker.Visible = false;",
                     "",
                     "picker.Visible = true;"
                 },
@@ -71,10 +71,10 @@ internal sealed class PickerDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`ValueChange`", "滚轮停止且选中项变化时触发", "`event Action<int>`", "—" }),
-                        new DocRow(new[] { "`Confirm`", "点击确认按钮时触发，携带当前选中索引", "`event Action<int>`", "—" }),
-                        new DocRow(new[] { "`Cancel`", "点击取消按钮时触发", "`event Action`", "—" }),
-                        new DocRow(new[] { "`Close`", "确认/取消后触发，宿主据此置 Visible 为 false", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnValueChange`", "滚轮停止且选中项变化时触发", "`event Action<int>`", "—" }),
+                        new DocRow(new[] { "`LhOnConfirm`", "点击确认按钮时触发，携带当前选中索引", "`event Action<int>`", "—" }),
+                        new DocRow(new[] { "`LhOnCancel`", "点击取消按钮时触发", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnClose`", "确认/取消后触发，宿主据此置 Visible 为 false", "`event Action`", "—" }),
                         new DocRow(new[] { "`Visible`", "是否显示；为 false 时不渲染任何内容", "`bool`", "`false`" }),
                         new DocRow(new[] { "`Options`", "候选项文本数组（单列）", "`string[]?`", "`null`" }),
                         new DocRow(new[] { "`Value`", "选中项索引（0 基）；越界时钳制到候选项范围内", "`int`", "`0`" }),

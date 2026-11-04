@@ -42,8 +42,8 @@ internal sealed class NavbarDoc
                     "    LeftIcon = \"back\",",
                     "    RightText = \"更多\",",
                     "};",
-                    "navbar.LeftClick += () => { };",
-                    "navbar.RightClick += () => { };"
+                    "navbar.LhOnLeftClick += () => { };",
+                    "navbar.LhOnRightClick += () => { };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -74,8 +74,8 @@ internal sealed class NavbarDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`LeftClick`", "点击左侧区域时触发（无左侧内容时不触发）", "`event Action`", "—" }),
-                        new DocRow(new[] { "`RightClick`", "点击右侧区域时触发（无右侧内容时不触发）", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnLeftClick`", "点击左侧区域时触发（无左侧内容时不触发）", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnRightClick`", "点击右侧区域时触发（无右侧内容时不触发）", "`event Action`", "—" }),
                         new DocRow(new[] { "`Title`", "中间标题", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`LeftText`", "左侧按钮文字；与 LeftIcon 二者非空时都显示", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`LeftIcon`", "左侧图标名（本地图标体系渲染）", "`string?`", "`null`" }),

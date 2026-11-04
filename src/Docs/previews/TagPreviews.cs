@@ -51,7 +51,7 @@ internal static class TagPreviews
         var large = new LhTag { LhSize = LhTagSize.Large, Type = LhTagType.Primary, Text = "large" };
 
         var closable = new LhTag { Type = LhTagType.Primary, Text = "可关闭", Closable = true };
-        closable.Close += () => scope.ShowToast("Close 事件触发（标签已关闭）");
+        closable.LhOnClose += () => scope.ShowToast("LhOnClose 事件触发（标签已关闭）");
 
         return PreviewLayout.Column(
             PreviewLayout.Row(small, medium, large),

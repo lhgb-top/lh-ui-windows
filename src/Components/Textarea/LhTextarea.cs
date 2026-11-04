@@ -13,7 +13,7 @@ namespace Top.Lhgb.Ui.Components.Textarea;
 /// 属性与 <c>lh-ui-core/specs/textarea.json</c> 逐字对齐；行为遵循 <c>cases/textarea.json</c>
 /// 的 6 条黄金用例（已翻译为 xUnit 测试，见 tests/LhTextareaTests.cs）。
 ///
-/// 受控语义：宿主监听 <see cref="ValueChange"/> 并把新值回写 <see cref="Value"/>。
+/// 受控语义：宿主监听 <see cref="LhOnValueChange"/> 并把新值回写 <see cref="Value"/>。
 /// </summary>
 public sealed class LhTextarea : UserControl
 {
@@ -24,7 +24,7 @@ public sealed class LhTextarea : UserControl
     private bool _suppressChange;
 
     /// <summary>值变化回调（受控）；disabled / readonly 时不触发</summary>
-    public event Action<string>? ValueChange;
+    public event Action<string>? LhOnValueChange;
 
     /// <summary>获得焦点时触发</summary>
     // 契约事件 lhOnFocus 按 spec 驼峰 → C# PascalCase 即 LhOnFocus（家族统一前缀，亦规避与 UIElement.Focus(FocusState) 同名）
@@ -169,7 +169,7 @@ public sealed class LhTextarea : UserControl
         }
         if (!Disabled && !Readonly)
         {
-            ValueChange?.Invoke(next);
+            LhOnValueChange?.Invoke(next);
         }
         if (ShowCount)
         {

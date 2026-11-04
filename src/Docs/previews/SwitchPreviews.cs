@@ -15,7 +15,7 @@ internal static class SwitchPreviews
     public static UIElement Basic(DocPreviewScope scope)
     {
         var sw = new LhSwitch { Checked = true };
-        sw.Change += value => scope.ShowToast($"Change：{value}");
+        sw.LhOnChange += value => scope.ShowToast($"LhOnChange：{value}");
 
         return PreviewLayout.Column(
             PreviewLayout.Row(new LhText { Text = "开" }, sw),
@@ -41,7 +41,7 @@ internal static class SwitchPreviews
     public static UIElement States(DocPreviewScope scope)
     {
         var loading = new LhSwitch { Checked = true, Loading = true };
-        loading.Change += value => scope.ShowToast($"加载中开关 Change：{value}");
+        loading.LhOnChange += value => scope.ShowToast($"加载中开关 LhOnChange：{value}");
 
         return PreviewLayout.Column(
             PreviewLayout.Row(loading, new LhText { Text = "Loading 加载中（不响应点击）" }),

@@ -75,8 +75,8 @@ public sealed class LhDocsHost : UserControl
             RightText = "切换主题",
             Bordered = true,
         };
-        _navbar.LeftClick += OnBack;
-        _navbar.RightClick += OnToggleTheme;
+        _navbar.LhOnLeftClick += OnBack;
+        _navbar.LhOnRightClick += OnToggleTheme;
         Grid.SetRow(_navbar, 0);
         _root.Children.Add(_navbar);
 

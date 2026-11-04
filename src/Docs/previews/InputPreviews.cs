@@ -15,7 +15,7 @@ internal static class InputPreviews
     public static UIElement Basic(DocPreviewScope scope)
     {
         var input = new LhInput { Placeholder = "请输入内容" };
-        input.ValueChange += value => scope.ShowToast($"ValueChange：{value}");
+        input.LhOnValueChange += value => scope.ShowToast($"LhOnValueChange：{value}");
         input.LhOnBlur += () => scope.ShowToast("Blur 失焦事件");
 
         return PreviewLayout.Column(
@@ -51,7 +51,7 @@ internal static class InputPreviews
             Clearable = true,
             Value = "试着点 ✕ 清除",
         };
-        clearable.ValueChange += value => scope.ShowToast($"ValueChange：{value}");
+        clearable.LhOnValueChange += value => scope.ShowToast($"LhOnValueChange：{value}");
 
         return PreviewLayout.Column(
             clearable,

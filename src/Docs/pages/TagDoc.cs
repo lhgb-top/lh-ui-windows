@@ -57,7 +57,7 @@ internal sealed class TagDoc
                 new[]
                 {
                     "三档尺寸映射到 `tag.height` / `paddingHorizontal` / `fontSize` 令牌；`Closable`",
-                    "为 true 时在右侧绘制关闭符，点击触发 `Close` 事件。"
+                    "为 true 时在右侧绘制关闭符，点击触发 `LhOnClose` 事件。"
                 },
                 TagPreviews.SizesAndClose,
                 new[]
@@ -68,7 +68,7 @@ internal sealed class TagDoc
                     "    Type = LhTagType.Primary,",
                     "    Closable = true,",
                     "};",
-                    "tag.Close += () => { /* 点击关闭符 */ };"
+                    "tag.LhOnClose += () => { /* 点击关闭符 */ };"
                 },
                 Array.Empty<DocTable>()),
             new DocSection(
@@ -89,7 +89,7 @@ internal sealed class TagDoc
                 {
                     new DocTable("", new[] { "属性", "说明", "类型", "默认值" }, new[]
                     {
-                        new DocRow(new[] { "`Close`", "点击关闭符时触发（需 `Closable` 为 true）", "`event Action`", "—" }),
+                        new DocRow(new[] { "`LhOnClose`", "点击关闭符时触发（需 `Closable` 为 true）", "`event Action`", "—" }),
                         new DocRow(new[] { "`Text`", "标签文字内容（spec 的 default 插槽）", "`string`", "`\"\"`" }),
                         new DocRow(new[] { "`Type`", "语义类型，决定底色、文字色与描边色", "`LhTagType`", "`Default`" }),
                         new DocRow(new[] { "`LhSize`", "标签尺寸，映射到尺寸令牌", "`LhTagSize`", "`Medium`" }),

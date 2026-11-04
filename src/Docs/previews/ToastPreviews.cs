@@ -25,7 +25,7 @@ internal static class ToastPreviews
         var hide = new LhButton { Type = LhButtonType.Default, Text = "立即隐藏" };
         hide.LhOnClick += () => toast.Hide();
 
-        toast.Close += () => scope.ShowToast("计时到期，Close 事件触发");
+        toast.LhOnClose += () => scope.ShowToast("计时到期，LhOnClose 事件触发");
 
         return Overlay(PreviewLayout.Row(show, hide), toast);
     }

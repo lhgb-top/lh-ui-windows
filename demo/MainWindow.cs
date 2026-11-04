@@ -17,7 +17,7 @@ namespace Top.Lhgb.Ui.Demo;
 ///
 /// 浮层（Dialog / Picker / Toast）作为根 Grid 的最后子节点挂载，跨行铺满；
 /// Toast 在最后，渲染层级最高（zIndex.toast &gt; zIndex.modal）。指令式组件的隐藏
-/// 由宿主在 Close 事件里完成（组件只负责触发 onClose，见各组件的 OnConfirmClick）。
+/// 由宿主在 LhOnClose 事件里完成（组件只负责触发 onClose，见各组件的 OnConfirmClick）。
 /// </summary>
 public sealed class MainWindow : Window
 {
@@ -43,7 +43,7 @@ public sealed class MainWindow : Window
             RightText = "切换主题",
             Bordered = true,
         };
-        navbar.RightClick += OnToggleTheme;
+        navbar.LhOnRightClick += OnToggleTheme;
         Grid.SetRow(navbar, 0);
         _root.Children.Add(navbar);
 
@@ -72,15 +72,15 @@ public sealed class MainWindow : Window
 
         // —— 浮层宿主：行 0 起、跨两行铺满 ——
         _dialog = new LhDialog { Closable = true };
-        _dialog.Confirm += () => ShowToast("已确认", LhToastType.Success);
-        _dialog.Close += () => _dialog.Visible = false;
+        _dialog.LhOnConfirm += () => ShowToast("已确认", LhToastType.Success);
+        _dialog.LhOnClose += () => _dialog.Visible = false;
         Grid.SetRow(_dialog, 0);
         Grid.SetRowSpan(_dialog, 2);
         _root.Children.Add(_dialog);
 
         _picker = new LhPicker { Title = "请选择" };
-        _picker.Confirm += index => _pickerConfirm?.Invoke(index);
-        _picker.Close += () => _picker.Visible = false;
+        _picker.LhOnConfirm += index => _pickerConfirm?.Invoke(index);
+        _picker.LhOnClose += () => _picker.Visible = false;
         Grid.SetRow(_picker, 0);
         Grid.SetRowSpan(_picker, 2);
         _root.Children.Add(_picker);

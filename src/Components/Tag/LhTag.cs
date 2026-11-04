@@ -24,7 +24,7 @@ public sealed class LhTag : UserControl
     private readonly TextBlock _closeMark;
 
     /// <summary>点击关闭符时触发（仅 <see cref="Closable"/> 为 true 时显示关闭符）</summary>
-    public event Action? Close;
+    public event Action? LhOnClose;
 
     /// <summary>标签类型，决定底色与文字色</summary>
     public static readonly DependencyProperty TypeProperty = DependencyProperty.Register(
@@ -46,7 +46,7 @@ public sealed class LhTag : UserControl
         nameof(Round), typeof(bool), typeof(LhTag),
         new PropertyMetadata(false, OnAppearanceChanged));
 
-    /// <summary>是否显示关闭符；点击关闭符触发 <see cref="Close"/></summary>
+    /// <summary>是否显示关闭符；点击关闭符触发 <see cref="LhOnClose"/></summary>
     public static readonly DependencyProperty ClosableProperty = DependencyProperty.Register(
         nameof(Closable), typeof(bool), typeof(LhTag),
         new PropertyMetadata(false, OnAppearanceChanged));
@@ -125,11 +125,11 @@ public sealed class LhTag : UserControl
         _closeMark.Foreground = new SolidColorBrush(a.ContentColor);
     }
 
-    /// <summary>关闭符点击：触发 Close 并拦截冒泡，避免命中标签本体</summary>
+    /// <summary>关闭符点击：触发 LhOnClose 并拦截冒泡，避免命中标签本体</summary>
     private void OnCloseTapped(object sender, TappedRoutedEventArgs e)
     {
         e.Handled = true;
-        Close?.Invoke();
+        LhOnClose?.Invoke();
     }
 
     private void OnThemeChanged(object? sender, EventArgs e) => ApplyAppearance();
